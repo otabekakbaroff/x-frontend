@@ -36,3 +36,39 @@
     transform: rotate(360deg);
   }
 }
+.dashboard{
+  display:flex;
+  justify-content: center;
+}
+
+.users{
+  width:15%;
+  background-color: whitesmoke;
+  height: 100vh;
+}
+.messages{
+  width:85%;
+  height: 100vh;
+  background-color: rgb(255, 230, 255);
+}
+.user-collection{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.user-icon{
+  background-color: skyblue;
+  border-radius: 150px;
+  height: 150px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+  font-size: 24px;
+}
+
+
+
+
