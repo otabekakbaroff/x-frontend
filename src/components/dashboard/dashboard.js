@@ -1,6 +1,6 @@
 import React from 'react'
-import Users from './users';
-import Messages from './messages'
+import Users from './usersSection/users';
+import Messages from './messageSection/messages'
 
 
 function Dashboard(){
