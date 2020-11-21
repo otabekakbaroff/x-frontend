@@ -12,7 +12,6 @@ export default function DemoChatMessages() {
         width:"50px",
         height:"50px",
         borderRadius:"50%",
-        // background:"red"
     }
     const chatContainer={
         display:"inline-flex"

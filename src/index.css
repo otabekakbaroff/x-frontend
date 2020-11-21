@@ -13,11 +13,7 @@ code {
 }
 
 
-.messages {
-  width: 100%;
-  margin-left: 30%;
-  /* background-color: yellow; */
-}
+
 
 /* .MuiFormControl-root  */
 .MuiFormControl-root .MuiTextField-root{
@@ -46,8 +42,17 @@ code {
 }
 
 
-.send-button-box {
-  display: flex;
-  /* width: 30%; */
-  margin: 0% 15px 0% 15px;
+
+@media only screen and (max-width: 600px) {
+  .users{
+    display: none;
+  }
+  .messages {
+    width: 100%;
+    margin-left: 0px !important;
+}
+.send-box, .profile-header {
+  width: 100% !important;
+}
+
 }

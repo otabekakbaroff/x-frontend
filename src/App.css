@@ -76,6 +76,8 @@ form{
 .users{
   width:30%;
   position: fixed;
+  overflow-y: scroll;
+max-height: 100%;
   background-color: white;
   box-shadow: 0px 5px 15px 3px #cacaca;
 }
@@ -90,9 +92,12 @@ form{
 .signup form button, .login form button {
   font-size:1em;
 }
-/* .messages{
-  width:70%;
-} */
+.messages {
+  width: 100%;
+  margin-left: 30%;
+  /* background-color: yellow; */
+}
+
 .send-box{
   position: fixed;
   bottom: 0;
@@ -105,11 +110,12 @@ form{
   background-color:rgb(255, 255, 255);
 }
 
-/* .send-button-box{
-  display:flex;
-  width:30%;
-  margin: 0% 15px 0% 15px; 
-} */
+.send-button-box {
+  display: flex;
+  /* width: 30%; */
+  margin: 0% 15px 0% 15px;
+}
+
 #send-icon{
   width:50px;
   height: 50px;
