@@ -3,6 +3,7 @@ import axiosWithAuth from '../../axiosWithAuth';
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
+import FakeContact from './FakeContact';
 
 function MyContacts(){
     const [users,setUsers] = useState([])
@@ -20,10 +21,12 @@ function MyContacts(){
       </InputAdornment>
     )
   }} />
+  <FakeContact/>
             {users.map(item=>(
                 <div className="user-collection-item" key={Math.floor(Math.random()*9999999)} onClick={()=>{localStorage.setItem('username',item.username)}}>
                     <div className="user-icon"></div>
                     <div>{item.name}</div>
+               
                 </div>
             ))}
         </div>

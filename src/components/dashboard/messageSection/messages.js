@@ -9,6 +9,7 @@ import MicIcon from '@material-ui/icons/Mic';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
+import DemoChatMessages from './DemoChatMessages'
 
 
 function Messages(){
@@ -40,7 +41,9 @@ function Messages(){
     return(
         <div className="messages">
             <ProfileHeader/>
-            <div className="chat-box"></div>
+            <div className="chat-box">
+                <DemoChatMessages/>
+            </div>
             <div className="send-box">
                 <IconButton >
                     <PhotoCameraIcon />
@@ -51,7 +54,7 @@ function Messages(){
                 <IconButton >
                     <MicIcon />
                 </IconButton>
-                <TextField  id="text" label="Type here..." variant="outlined" onChange={handleChange} InputProps={{
+                <TextField  id="text" className="textareawidth" label="Type here..." variant="outlined" onChange={handleChange} InputProps={{
                     endAdornment: (
                     <InputAdornment>
                         <IconButton >
