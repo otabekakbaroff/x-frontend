@@ -6,24 +6,25 @@ import Dashboard from './components/dashboard/dashboard';
 import PrivateRoute from './components/PrivateRoute';
 import {Context} from './components/Context'
 import './App.css'
-// import io from "socket.io-client"
-// const socket = io("http://localhost:5000")
+import io from "socket.io-client"
+const socket = io("http://localhost:5000")
 
 
 function App() {
-  // useEffect(()=>{
-  //   socket.on('confirm', function(data){
-  //       console.log(data)
-  //   })
-  // },[])
+  useEffect(()=>{
+    socket.on('confirm', function(data){
+        console.log(data)
+        localStorage.setItem('username', JSON.stringify(data))
+    })
+  },[])
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Context.Provider /*value={{socket}}*/>
+          <Context.Provider value={{socket}}>
               <Route  exact path="/" component={Login}/>
-              <PrivateRoute path="/dashboard" component={Dashboard}/>
               <Route  path="/signup" component={SignUp}/>
+              <PrivateRoute path="/dashboard" component={Dashboard}/>
           </Context.Provider>
         </Switch>
       </Router>

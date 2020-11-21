@@ -1,6 +1,6 @@
 import React,{useEffect,useContext, useState} from 'react'
 import {Context} from '../../Context'
-import ProfileHeader from './userProfileHeader'
+import ProfileHeader from './ProfileHeader'
 import SendIcon from '@material-ui/icons/Send';
 import IconButton from "@material-ui/core/IconButton";
 import TextField from '@material-ui/core/TextField';

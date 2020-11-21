@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Register(){
+function Register(props){
     const classes = useStyles();
     const [signup,setSignup]=useState({
         name:'',
@@ -36,9 +36,8 @@ function Register(){
         axiosWithAuth().post('/api/users/register', signup)
         .then(response=>{
             console.log(response)
-            // localStorage.setItem('token',response.data.token);
-            // props.history.push("/profile/classes");
-            // window.location.reload(true)
+            localStorage.setItem('token',response.data.token);
+            props.history.push("/dashboard");
         })
         .catch(err=>{
             console.log(err);
@@ -69,7 +68,7 @@ function Register(){
       </InputAdornment>
     )
   }}/>
-                <Button variant="contained" color="primary" size="large" onChange={LoginSubmit}>
+                <Button type="submit" variant="contained" color="primary" size="large" onChange={LoginSubmit}>
                     Sign up
                 </Button>
                 <span>Have an account? <Link to="/">Login</Link></span>
