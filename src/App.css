@@ -75,6 +75,10 @@ form{
 }
 .users{
   width:30%;
+  position: fixed;
+  overflow-y: scroll;
+max-height: 100%;
+  background-color: white;
   box-shadow: 0px 5px 15px 3px #cacaca;
 }
 .login form .avatar{
@@ -88,15 +92,17 @@ form{
 .signup form button, .login form button {
   font-size:1em;
 }
-.messages{
-  width:70%;
-  /* background-color:yellow; */
+.messages {
+  width: 100%;
+  margin-left: 30%;
+  /* background-color: yellow; */
 }
+
 .send-box{
   position: fixed;
   bottom: 0;
   box-shadow: 0px -5px 5px -4px #cacaca;
-  width:100%;
+  width:70%;
   display:flex;
   justify-content: flex-start;
   align-items: center;
@@ -104,11 +110,12 @@ form{
   background-color:rgb(255, 255, 255);
 }
 
-.send-button-box{
-  display:flex;
-  width:30%;
-  margin: 0% 15px 0% 15px; 
+.send-button-box {
+  display: flex;
+  /* width: 30%; */
+  margin: 0% 15px 0% 15px;
 }
+
 #send-icon{
   width:50px;
   height: 50px;
@@ -120,6 +127,8 @@ form{
   height: 100px;
   padding: 10px;
   box-shadow: 0px 5px 5px -4px #cacaca;
+  position:fixed;
+  width: 70%
 }
 .profile-header .profile_details{
   display: flex;
@@ -151,7 +160,8 @@ form{
 }
 .chat-box{
   background-color: #cccccc63;
-  height: 85vh;
+  min-height: 85vh;
+  padding: 20% 10%;
 }
 
 .my-profile{
