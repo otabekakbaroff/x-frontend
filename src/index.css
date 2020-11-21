@@ -33,6 +33,10 @@ code {
 }
 
 .nthType:nth-child(even){flex-direction: row-reverse}
+.nthType:nth-child(even) .chatbubbles{flex-direction: row-reverse}
+.nthType:nth-child(odd) .bubble {
+  border-radius: 20px 20px 20px 0px !important;
+}
 .nthType:nth-child(odd) .avi {
   background: seagreen;
 }
@@ -58,5 +62,20 @@ code {
 .contactprofile{
   margin-top: 10%;
 }
+
+.profile-header .profile_details .icon {
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.profile-header .profile_details .name {
+  font-size: 12px;
+}
+
+/* #call-icon, #video-call-icon, #add-person-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0;
+} */
 
 }
