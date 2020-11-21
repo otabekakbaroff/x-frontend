@@ -6,7 +6,7 @@ import Messages from './messageSection/messages'
 function Dashboard(){
     return(
         <div className="dashboard">
-            <Users/>
+            {/* <Users/> */}
             <Messages/>
         </div>
     )
