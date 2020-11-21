@@ -10,10 +10,12 @@ import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import DemoChatMessages from './DemoChatMessages'
+import ContactInfo from './contactInfo/ContactInfo'
 
 
 function Messages(){
     const [activeButton,setActiveButton] = useState([]);
+    const [isClicked, setIsClicked]=useState(false)
     // const socket=useContext(Context).socket;
     function send(){
         // let chatbox = document.querySelector(".chat-box")
@@ -38,12 +40,18 @@ function Messages(){
             setActiveButton({})
         }
     }
+
+    const clickContact=e=>{
+        setIsClicked(!isClicked)
+    }
+    console.log("Clicked", isClicked)
+
     return(
         <div className="messages">
-            <ProfileHeader/>
-            <div className="chat-box">
-                <DemoChatMessages/>
-            </div>
+            <ProfileHeader clickContact={clickContact}/>
+            {isClicked ? <ContactInfo clickContact={clickContact}/>:<Chat/>} 
+            
+
             <div className="send-box">
                 <IconButton >
                     <PhotoCameraIcon />
@@ -75,6 +83,14 @@ function Messages(){
 
 export default Messages
 
+
+export function Chat(){
+    return(
+    <div className="chat-box">
+    <DemoChatMessages/>
+</div>
+)
+}
 
 
 
