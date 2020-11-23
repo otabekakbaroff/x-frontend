@@ -1,5 +1,4 @@
-import React,{useEffect,useContext, useState} from 'react'
-import {Context} from '../../Context'
+import React,{useEffect, useState} from 'react'
 import ProfileHeader from './userProfileHeader'
 import SendIcon from '@material-ui/icons/Send';
 import IconButton from "@material-ui/core/IconButton";
@@ -12,18 +11,11 @@ import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import DemoChatMessages from './DemoChatMessages'
 import ContactInfo from './contactInfo/ContactInfo'
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 
 
 import AppBar from '@material-ui/core/AppBar';
-import MenuIcon from '@material-ui/icons/Menu';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
-import SearchIcon from '@material-ui/icons/Search';
-import MoreIcon from '@material-ui/icons/MoreVert';
-
 import useStyles from '../dash.styles'
-import { Camera } from '@material-ui/icons';
+
 
 
 function Messages({handleDrawerToggle, theme, mobileOpen, drawer}){
