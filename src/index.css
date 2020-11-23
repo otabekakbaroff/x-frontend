@@ -11,3 +11,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.nthType:nth-child(even){flex-direction: row-reverse}
+.nthType:nth-child(odd) .avi {
+  background: seagreen;
+}
+
+.nthType:nth-child(even) .avi {
+  background: orangered;
+}
+
+
+
+/* @media only screen and (max-width: 600px) {
+  .users{
+    display: none;
+  }
+  .messages {
+    width: 100%;
+    margin-left: 0px !important;
+}
+.send-box, .profile-header {
+  width: 100% !important;
+}
+
+} */
+
