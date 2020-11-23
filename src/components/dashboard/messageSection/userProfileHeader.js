@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import IconButton from "@material-ui/core/IconButton";
 import CallIcon from '@material-ui/icons/Call';
 import VideocamIcon from '@material-ui/icons/Videocam';
@@ -8,33 +8,14 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
-
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
 import useStyles from '../dash.styles'
-import { useTheme } from '@material-ui/core/styles';
-import Users from '../usersSection/users';
-import SearchIcon from '@material-ui/icons/Search';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Avatar } from '@material-ui/core';
 
 
 
-function UserProfilerHeader({window, mobileOpen,setMobileOpen, handleDrawerToggle}){
-    // const [mobileOpen, setMobileOpen] = useState(false);
-   
-    // const handleDrawerToggle = () => {
-    //   setMobileOpen(!mobileOpen);
-    // };
+function UserProfilerHeader({ handleDrawerToggle, setIsOpen}){
  const classes = useStyles();
- const theme = useTheme();
-
- const drawer = (
-    <div className="dashboard">
-        <Users/>
-    </div>
-);
- const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
         <>
@@ -49,7 +30,7 @@ function UserProfilerHeader({window, mobileOpen,setMobileOpen, handleDrawerToggl
           >
             <MenuIcon />
           </IconButton>
-          <Avatar className={classes.large} style={{margin:"8px"}}>N</Avatar>
+          <Avatar className={classes.large} onClick={()=>setIsOpen(true)} style={{margin:"8px"}}>N</Avatar>
           <Typography variant="h6" noWrap>
             Nolan Chickadoo
           </Typography>
@@ -65,9 +46,7 @@ function UserProfilerHeader({window, mobileOpen,setMobileOpen, handleDrawerToggl
           </IconButton>
           <IconButton edge="end" color="inherit">
             <MoreIcon />
-          </IconButton>
-
-          
+          </IconButton>    
 
         </Toolbar>
       </AppBar>

@@ -12,23 +12,16 @@ import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import MenuIcon from '@material-ui/icons/Menu';
-import Fab from '@material-ui/core/Fab';
-import Typography from '@material-ui/core/Typography';
-import AddIcon from '@material-ui/icons/Add';
-import SearchIcon from '@material-ui/icons/Search';
-import MoreIcon from '@material-ui/icons/MoreVert';
-
-
-
 import useStyles from '../dash.styles'
 import DemoChatMessages from './DemoChatMessages';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 
 
-function Messages({mobileOpen,setMobileOpen, handleDrawerToggle}){
+function Messages({mobileOpen,setMobileOpen, handleDrawerToggle, isOpen, setIsOpen}){
     const classes = useStyles();
     const [activeButton,setActiveButton] = useState([]);
+
     // const socket=useContext(Context).socket;
     function send(){
         // let chatbox = document.querySelector(".chat-box")
@@ -56,6 +49,8 @@ function Messages({mobileOpen,setMobileOpen, handleDrawerToggle}){
     return(
         <div className="messages" style={{background:"white"}}>
             <ProfileHeader
+            isOpen={setIsOpen}
+            setIsOpen={setIsOpen}
                     mobileOpen={mobileOpen}
                     setMobileOpen={setMobileOpen}
                     handleDrawerToggle={handleDrawerToggle}
@@ -63,42 +58,19 @@ function Messages({mobileOpen,setMobileOpen, handleDrawerToggle}){
             {/* <div className="chat-box"></div> */}
 
             <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <div className={classes.root}>
+                <div className={classes.toolbar} />
+                <div className={classes.root}>
+                    {isOpen?<ContactDetails
+                    setIsOpen={setIsOpen}
+                    isOpen={isOpen} 
+                    />:<Chat/>}
+                    </div>
         
-        <div className="chat-box">
-            <DemoChatMessages/>
-                
-            </div>
-
-
-        </div>
- 
-      </main>
-
-      {/* <div 
-    style={{
-        height:"100px",
-        background:"lightgreen",
-        width:"100%",
-        position:"fixed",
-        bottom:0}}> ioji</div>                  */}
+            </main>
 
 <AppBar position="fixed" color="primary" className={classes.appBar2}>
         <Toolbar>
-          {/* <IconButton edge="start" color="inherit" aria-label="open drawer">
-            <MenuIcon />
-          </IconButton>
-          <Fab color="secondary" aria-label="add" className={classes.fabButton2}>
-            <AddIcon />
-          </Fab>
-          <div className={classes.grow2} />
-          <IconButton color="inherit">
-            <SearchIcon />
-          </IconButton>
-          <IconButton edge="end" color="inherit">
-            <MoreIcon />
-          </IconButton> */}
+
           <IconButton >
                     <PhotoCameraIcon />
                 </IconButton>
@@ -108,30 +80,30 @@ function Messages({mobileOpen,setMobileOpen, handleDrawerToggle}){
                 <IconButton >
                     <MicIcon />
                 </IconButton>
-                {/* <TextField  id="text" label="Type here..." variant="outlined" onChange={handleChange} InputProps={{
-                    endAdornment: (
-                    <InputAdornment>
-                        <IconButton >
-                            <EmojiEmotionsIcon />
-                        </IconButton>
-                    </InputAdornment>
-                )}}/> */}
                 <TextField
           id="outlined-full-width"
-          label="Label"
+          label="Type here..."
+          onChange={handleChange}
           style={{ margin: 8 }}
           placeholder="Placeholder"
           fullWidth
           margin="normal"
           InputLabelProps={{
-            shrink: true,
-          }}
+            endAdornment: (
+            <InputAdornment>
+                <IconButton >
+                    <EmojiEmotionsIcon />
+                </IconButton>
+            </InputAdornment>
+        ),
+        shrink:true
+    }}
           variant="outlined"
         />
                 {/* <input className="text" placeholder="Type here..." onChange={handleChange}/> */}
                 <div className="send-button-box">
                     <IconButton id="send-button"  onClick={send}>
-                        <SendIcon style={activeButton} id="send-icon"/>
+                        <SendIcon style={activeButton} />
                     </IconButton>
                 </div>
 
@@ -144,6 +116,27 @@ function Messages({mobileOpen,setMobileOpen, handleDrawerToggle}){
 }
 
 export default Messages
+
+
+const Chat=()=>{
+    return(
+        <div className="chat-box">
+        <DemoChatMessages/>
+            
+        </div>
+    )
+}
+
+const ContactDetails=({isOpen, setIsOpen})=>{
+    return(
+        <div>
+            <div style={{position:"fixed"}}>
+                <CancelIcon onClick={()=>setIsOpen(!isOpen)}/>
+            <h2>User Details</h2>
+            </div>
+        </div>
+    )
+}
 
 
 
