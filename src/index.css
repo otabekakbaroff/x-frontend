@@ -45,16 +45,22 @@ code {
   background: orangered;
 }
 
+/* .makeStyles-content-14 {
+  padding: 0!important;
+  flex-grow: 1;
+} */
 
 
-@media only screen and (max-width: 600px) {
-  .users{
+
+ @media only screen and (max-width: 599px) {
+  /* .users{
     display: none;
-  }
+  } */
   .messages {
     width: 100%;
     margin-left: 0px !important;
-}
+  }
+/* }
 .send-box, .profile-header {
   width: 100% !important;
 }
@@ -72,11 +78,6 @@ code {
   font-size: 12px;
 }
 
-/* #call-icon, #video-call-icon, #add-person-icon {
-  width: 40px;
-  height: 40px;
-  margin: 0;
-} */
 
 .MuiIconButton-root {
   flex: 0 0 auto;
@@ -89,7 +90,5 @@ code {
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  /* background: yellow; */
-}
-
-}
+} */
+  }

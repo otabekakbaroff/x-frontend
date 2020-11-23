@@ -11,11 +11,25 @@ import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import DemoChatMessages from './DemoChatMessages'
 import ContactInfo from './contactInfo/ContactInfo'
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 
-function Messages(){
+import AppBar from '@material-ui/core/AppBar';
+import MenuIcon from '@material-ui/icons/Menu';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import SearchIcon from '@material-ui/icons/Search';
+import MoreIcon from '@material-ui/icons/MoreVert';
+
+import useStyles from '../dash.styles'
+import { Camera } from '@material-ui/icons';
+
+
+function Messages({handleDrawerToggle, theme, mobileOpen, drawer}){
     const [activeButton,setActiveButton] = useState([]);
     const [isClicked, setIsClicked]=useState(false)
+    const classes = useStyles();
     // const socket=useContext(Context).socket;
     function send(){
         // let chatbox = document.querySelector(".chat-box")
@@ -48,21 +62,35 @@ function Messages(){
 
     return(
         <div className="messages">
-            <ProfileHeader clickContact={clickContact}/>
-            {isClicked ? <ContactInfo clickContact={clickContact}/>:<Chat/>} 
-            
+            <ProfileHeader 
+            mobileOpen={mobileOpen}
+            drawer={drawer}
 
-            <div className="send-box">
-                <IconButton >
-                    <PhotoCameraIcon />
-                </IconButton>
-                <IconButton >
-                    <PhotoLibraryIcon />
-                </IconButton>
-                <IconButton >
-                    <MicIcon />
-                </IconButton>
-                <TextField  id="text" className="textareawidth" label="Type here..." variant="outlined" onChange={handleChange} InputProps={{
+            theme={theme}
+            handleDrawerToggle={handleDrawerToggle}
+            clickContact={clickContact}/>
+
+
+            <main className={classes.content}>
+        <div className={classes.toolbar} />
+        {isClicked ? <ContactInfo clickContact={clickContact}/>:<Chat/>} 
+        <div className={classes.toolbar} />
+
+      </main>
+
+      <AppBar position="fixed" color="primary" className={classes.appBar2}>
+        <Toolbar>
+          <IconButton color="inherit" aria-label="open drawer">
+          <PhotoCameraIcon />
+          </IconButton>
+          <IconButton color="inherit" aria-label="open drawer">
+          <PhotoLibraryIcon />
+          </IconButton>
+          <IconButton color="inherit" aria-label="open drawer">
+          <MicIcon />
+          </IconButton>
+
+          <TextField className="textareawidth" color="inherit" label="Type here..." variant="outlined" onChange={handleChange} InputProps={{
                     endAdornment: (
                     <InputAdornment>
                         <IconButton >
@@ -70,13 +98,14 @@ function Messages(){
                         </IconButton>
                     </InputAdornment>
                 )}}/>
-                {/* <input className="text" placeholder="Type here..." onChange={handleChange}/> */}
-                <div className="send-button-box">
-                    <IconButton id="send-button"  onClick={send}>
-                        <SendIcon style={activeButton} id="send-icon"/>
+
+<IconButton id="send-button"  onClick={send}>
+                        <SendIcon style={activeButton}/>
                     </IconButton>
-                </div>
-            </div>
+        </Toolbar>
+      </AppBar>
+            
+
         </div>
     )
 }
