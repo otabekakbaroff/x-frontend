@@ -2,10 +2,12 @@ import React from 'react'
 
 export default function DemoChatMessages() {
     const chatbubbles={
+
         maxWidth:"330px",
         background:"white",
         borderRadius: "20px 20px 0px 20px",
         border:"1px solid lightgrey",
+
         margin:10,
         padding:10
     }
@@ -13,12 +15,15 @@ export default function DemoChatMessages() {
         width:"50px",
         height:"50px",
         borderRadius:"50%",
+
         marginTop:"35px"
+
     }
     const chatContainer={
         display:"inline-flex"
     }
     return (
+
         <div className="contactprofile" 
         style={{display:"grid", }}
         >

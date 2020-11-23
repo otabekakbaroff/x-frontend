@@ -9,6 +9,7 @@ import MicIcon from '@material-ui/icons/Mic';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
+import DemoChatMessages from './DemoChatMessages'
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -47,6 +48,7 @@ function Messages({mobileOpen,setMobileOpen, handleDrawerToggle, isOpen, setIsOp
         }
     }
     return(
+
         <div className="messages" style={{background:"white"}}>
             <ProfileHeader
             isOpen={setIsOpen}
@@ -80,6 +82,7 @@ function Messages({mobileOpen,setMobileOpen, handleDrawerToggle, isOpen, setIsOp
                 <IconButton >
                     <MicIcon />
                 </IconButton>
+
                 <TextField
           id="outlined-full-width"
           label="Type here..."
@@ -100,6 +103,7 @@ function Messages({mobileOpen,setMobileOpen, handleDrawerToggle, isOpen, setIsOp
     }}
           variant="outlined"
         />
+
                 {/* <input className="text" placeholder="Type here..." onChange={handleChange}/> */}
                 <div className="send-button-box">
                     <IconButton id="send-button"  onClick={send}>
