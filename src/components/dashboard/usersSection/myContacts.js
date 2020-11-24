@@ -14,13 +14,30 @@ function MyContacts(){
     },[])
     return(
         <div className="user-collection">
-            <TextField fullWidth label="Search of users..." variant="filled" InputProps={{
+            <TextField
+          label="Search"
+          id="outlined-margin-dense"
+          defaultValue="Search"
+          style = {{width: "95%", margin:"0, 5px!important"}}
+
+        //   className={classes.textField}
+          margin="dense"
+          variant="outlined"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment>
+                  <SearchIcon />
+              </InputAdornment>
+            )
+          }}
+        />
+            {/* <TextField fullWidth label="Search of users..." variant="filled" InputProps={{
     endAdornment: (
       <InputAdornment>
           <SearchIcon />
       </InputAdornment>
     )
-  }} />
+  }} /> */}
   <FakeContact/>
             {users.map(item=>(
                 <div className="user-collection-item" key={Math.floor(Math.random()*9999999)} onClick={()=>{localStorage.setItem('username',item.username)}}>

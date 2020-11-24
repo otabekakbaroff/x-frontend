@@ -1,7 +1,7 @@
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { deepOrange, deepPurple } from '@material-ui/core/colors';
 
-const drawerWidth = 240;
+const drawerWidth = 340;
 
 export default makeStyles((theme) => ({
     root: {
@@ -11,6 +11,8 @@ export default makeStyles((theme) => ({
       [theme.breakpoints.up('sm')]: {
         width: drawerWidth,
         flexShrink: 0,
+        // border:"2px solid red"
+        // boxShadow:"0px 5px 5px -4px #cacaca"
       },
     },
     appBar: {
@@ -18,6 +20,12 @@ export default makeStyles((theme) => ({
         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth,
       },
+      background:"white",
+      padding: "7px",
+      color: "darkgrey",
+      boxShadow: "0px 2px 4px -1px rgba(245, 0, 87, 0.04), 0px 4px 5px 0px rgba(245, 0, 87, 0.04), 0px 1px 10px 0px rgba(0,0,0,0.12)",
+      // boxShadow:"red"
+
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -29,6 +37,7 @@ export default makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
       width: drawerWidth,
+      boxShadow:"0px 0px 7px -4px rgb(193 169 185 / 87%)"
     },
     content: {
       // flexGrow: 1,
@@ -51,8 +60,11 @@ export default makeStyles((theme) => ({
         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth,
       },
+      background:"white",
+      boxShadow: "1px 3px 12px 2px rgb(208 184 193 / 44%)",
       padding:"8px",
       top: 'auto',
+      color:"darkgrey",
       bottom: 0,
     },
     grow2: {

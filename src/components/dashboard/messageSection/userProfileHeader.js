@@ -22,7 +22,7 @@ function UserProfilerHeader({clickContact,window, handleDrawerToggle, theme, mob
 
     return (
         <div>
-            <AppBar position="fixed" className={classes.appBar}>
+            <AppBar position="fixed" color="default" className={classes.appBar}>
         <Toolbar>
           <IconButton
             color="inherit"
