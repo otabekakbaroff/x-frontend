@@ -14,23 +14,23 @@ import DemoChatMessages from './DemoChatMessages'
 
 function Messages(){
     const [activeButton,setActiveButton] = useState([]);
-    // const socket=useContext(Context).socket;
+    const socket=useContext(Context).socket;
     function send(){
-        // let chatbox = document.querySelector(".chat-box")
-        // let message = document.querySelector(".text").value
-        // socket.emit('private',{username:localStorage.getItem('username'),message:message})
-        // chatbox.innerHTML +='<p>'+message+'</p>'
-        // chatbox.scrollTo(0, chatbox.scrollHeight);
-        console.log('hit')
+        let chatbox = document.querySelector(".chat-box")
+        let message = document.querySelector("#text").value
+        socket.emit('private',{username:localStorage.getItem('receiver-username'),message:message})
+        chatbox.innerHTML +='<p>'+message+'</p>'
+        chatbox.scrollTo(0, chatbox.scrollHeight);
     }
     useEffect(()=>{
         let chatbox = document.querySelector(".chat-box")
-        // socket.on('private', function(data){
-        //     chatbox.innerHTML +='<h3>'+data.username+'</h3>'
-        //     chatbox.innerHTML +='<p>'+data.message+'</p>'
-        //     chatbox.scrollTo(0, chatbox.scrollHeight);
-        // })  
-    },[/*socket*/])
+        socket.on('private', function(data){
+            console.log(data)
+            chatbox.innerHTML +='<h3>'+localStorage.getItem('receiver-username')+'</h3>'
+            chatbox.innerHTML +='<p>'+data.message+'</p>'
+            chatbox.scrollTo(0, chatbox.scrollHeight);
+        })  
+    },[socket])
     const handleChange = (e) =>{
         if(e.target.value){
             setActiveButton({fill: "#478dff",transform: `rotate(-45deg)`})
@@ -42,7 +42,7 @@ function Messages(){
         <div className="messages">
             <ProfileHeader/>
             <div className="chat-box">
-                <DemoChatMessages/>
+                {/* <DemoChatMessages/> */}
             </div>
             <div className="send-box">
                 <IconButton >
@@ -62,10 +62,9 @@ function Messages(){
                         </IconButton>
                     </InputAdornment>
                 )}}/>
-                {/* <input className="text" placeholder="Type here..." onChange={handleChange}/> */}
                 <div className="send-button-box">
-                    <IconButton id="send-button"  onClick={send}>
-                        <SendIcon style={activeButton} id="send-icon"/>
+                    <IconButton type="submit" id="send-button"  onClick={send}>
+                        <SendIcon type="submit" style={activeButton} id="send-icon"/>
                     </IconButton>
                 </div>
             </div>

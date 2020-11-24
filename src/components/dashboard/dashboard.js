@@ -6,7 +6,13 @@ import {Context} from '.././Context'
 function Dashboard(){
     const socket=useContext(Context).socket;
     useEffect(()=>{
-        socket.emit('authenticate', JSON.parse(localStorage.getItem('username')))
+        socket.on('confirm', function(data){
+            localStorage.setItem('username', data)
+        })
+        socket.on('reconnect', function(data){
+            console.log(data)
+            socket.emit('reconnection',localStorage.getItem('username'))
+        })
     },[socket])
     return(
         <div className="dashboard">
@@ -17,3 +23,7 @@ function Dashboard(){
 }
 
 export default Dashboard
+
+
+
+

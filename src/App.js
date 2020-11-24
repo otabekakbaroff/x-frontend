@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './components/authPage/login';
 import SignUp from './components/authPage/register';
@@ -11,12 +11,6 @@ const socket = io("http://localhost:5000")
 
 
 function App() {
-  useEffect(()=>{
-    socket.on('confirm', function(data){
-        console.log(data)
-        localStorage.setItem('username', JSON.stringify(data))
-    })
-  },[])
   return (
     <div className="App">
       <Router>
