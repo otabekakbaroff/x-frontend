@@ -33,6 +33,10 @@ code {
 }
 
 .nthType:nth-child(even){flex-direction: row-reverse}
+.nthType:nth-child(even) .chatbubbles{flex-direction: row-reverse}
+.nthType:nth-child(odd) .bubble {
+  border-radius: 20px 20px 20px 0px !important;
+}
 .nthType:nth-child(odd) .avi {
   background: seagreen;
 }
@@ -41,18 +45,50 @@ code {
   background: orangered;
 }
 
+/* .makeStyles-content-14 {
+  padding: 0!important;
+  flex-grow: 1;
+} */
 
 
-@media only screen and (max-width: 600px) {
-  .users{
+
+ @media only screen and (max-width: 599px) {
+  /* .users{
     display: none;
-  }
+  } */
   .messages {
     width: 100%;
     margin-left: 0px !important;
-}
+  }
+/* }
 .send-box, .profile-header {
   width: 100% !important;
 }
 
+.contactprofile{
+  margin-top: 10%;
 }
+
+.profile-header .profile_details .icon {
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.profile-header .profile_details .name {
+  font-size: 12px;
+}
+
+
+.MuiIconButton-root {
+  flex: 0 0 auto;
+  color: rgba(0, 0, 0, 0.54);
+  padding: 28px;
+  overflow: visible;
+  font-size: 1.5rem;
+  text-align: center;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+} */
+  }
