@@ -1,7 +1,7 @@
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { deepOrange, deepPurple } from '@material-ui/core/colors';
 
-const drawerWidth = 240;
+const drawerWidth = 340;
 
 export default makeStyles((theme) => ({
     root: {
@@ -11,6 +11,8 @@ export default makeStyles((theme) => ({
       [theme.breakpoints.up('sm')]: {
         width: drawerWidth,
         flexShrink: 0,
+        // border:"2px solid red"
+        // boxShadow:"0px 5px 5px -4px #cacaca"
       },
     },
     appBar: {
@@ -35,6 +37,7 @@ export default makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
       width: drawerWidth,
+      boxShadow:"0px 0px 7px -4px rgb(193 169 185 / 87%)"
     },
     content: {
       // flexGrow: 1,

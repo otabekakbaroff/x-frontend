@@ -1,3 +1,7 @@
+:root {
+  --drawerWidth: 340px;
+}
+
 *{
   border:0;
   padding:0;
@@ -101,7 +105,7 @@ max-height: 100%;
 }
 .messages {
   width: 100%;
-  margin-left: 240px;
+  margin-left: var(--drawerWidth);
   /* background-color: yellow; */
 }
 
@@ -176,10 +180,11 @@ max-height: 100%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: solid 0.1px #cacaca;
+  /* border: solid 0.1px #cacaca; */
   border-left: none;
   border-top: none;
   height: 350px;
+
 }
 .my-profile h1{
   margin: 10px;
@@ -194,7 +199,7 @@ max-height: 100%;
   background-size: cover;
 }
 .user-collection{
-  border: solid 0.1px #cacaca;
+  /* border: solid 0.1px #cacaca; */
   border-left: none;
   border-top: none;
   height: 958px;
@@ -203,6 +208,7 @@ max-height: 100%;
   width:75px;
   height: 75px;
   border-radius: 50%;
+  margin:6px;
   background-image: url("https://static.jobscan.co/blog/uploads/linkedin-profile-picture.jpg");
   background-position: center;
   background-size: cover;

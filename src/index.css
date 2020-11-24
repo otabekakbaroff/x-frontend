@@ -55,6 +55,10 @@ code {
 } */
 
 
+.MuiDrawer-paperAnchorDockedLeft {
+  border-right: 0!important;
+}
+
 
  @media only screen and (max-width: 599px) {
   /* .users{
