@@ -64,6 +64,7 @@ export default makeStyles((theme) => ({
       boxShadow: "1px 3px 12px 2px rgb(208 184 193 / 44%)",
       padding:"8px",
       top: 'auto',
+      color:"darkgrey",
       bottom: 0,
     },
     grow2: {

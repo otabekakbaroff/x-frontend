@@ -83,7 +83,8 @@ function Messages({handleDrawerToggle, theme, mobileOpen, drawer}){
           <MicIcon />
           </IconButton>
 
-          <TextField className="textareawidth" color="inherit" label="Type here..." variant="outlined" onChange={handleChange} InputProps={{
+          <TextField className="textareawidth" color="inherit" 
+           label="Type here..." variant="outlined" onChange={handleChange} InputProps={{
                     endAdornment: (
                     <InputAdornment>
                         <IconButton >
