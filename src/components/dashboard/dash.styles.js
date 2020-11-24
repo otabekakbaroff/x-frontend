@@ -18,6 +18,12 @@ export default makeStyles((theme) => ({
         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth,
       },
+      background:"white",
+      padding: "7px",
+      color: "darkgrey",
+      boxShadow: "0px 2px 4px -1px rgba(245, 0, 87, 0.04), 0px 4px 5px 0px rgba(245, 0, 87, 0.04), 0px 1px 10px 0px rgba(0,0,0,0.12)",
+      // boxShadow:"red"
+
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -51,6 +57,8 @@ export default makeStyles((theme) => ({
         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth,
       },
+      background:"white",
+      boxShadow: "1px 3px 12px 2px rgb(208 184 193 / 44%)",
       padding:"8px",
       top: 'auto',
       bottom: 0,

@@ -15,6 +15,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 
 import AppBar from '@material-ui/core/AppBar';
 import useStyles from '../dash.styles'
+import { shadows } from '@material-ui/system';
 
 
 
@@ -70,7 +71,7 @@ function Messages({handleDrawerToggle, theme, mobileOpen, drawer}){
 
       </main>
 
-      <AppBar position="fixed" color="primary" className={classes.appBar2}>
+      <AppBar position="fixed" color="default" className={classes.appBar2}>
         <Toolbar>
           <IconButton color="inherit" aria-label="open drawer">
           <PhotoCameraIcon />
@@ -107,7 +108,7 @@ export default Messages
 
 export function Chat(){
     return(
-    <div className="chat-box">
+    <div className="chat-box" style={{paddingBottom:"25px", paddingTop:"25px"}}>
     <DemoChatMessages/>
 </div>
 )
