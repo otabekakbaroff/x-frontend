@@ -22,9 +22,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Login(props) {
   const classes = useStyles();
-  // const socket=useContext(Context).socket;
+  const socket=useContext(Context).socket;
   const [login,setLogin]=useState({
-    name:'',
     username:'',
     password:''
   });
@@ -41,44 +40,39 @@ function Login(props) {
       axiosWithAuth().post('/api/users/login', login)
       .then(response=>{
           localStorage.setItem('token',response.data.token);
-          // socket.emit('user-info',response.data.user.username)
+          socket.emit('user-info',response.data.user.username)
           props.history.push("/dashboard");
       })
       .catch(err=>{
           console.log(err);
       })
+      console.log("login", login)
   }
   return (
     <div className="login">
-        {/* <form>
-          <input onChange={handleChange} className="username" name="username" placeholder="username"/>
-          <input onChange={handleChange} className="password" name="password" placeholder="password"/>
-          <button onClick={LoginSubmit}>Login</button><span>Don't have an account? <a href="#">Sign up</a></span>
-        </form> */}
         <form className={classes.root} noValidate autoComplete="off">
           <h1>Login</h1>
           <div className="avatar"></div>
-          <TextField  label="Username" variant="filled" onChange={handleChange} InputProps={{
+          <TextField  name="username" label="Username" variant="filled" onChange={handleChange} InputProps={{
     endAdornment: (
       <InputAdornment>
           <AccountCircleIcon />
       </InputAdornment>
     )
   }}/>
-          <TextField  label="Password" type="password" autoComplete="current-password" variant="filled"  onChange={handleChange} InputProps={{
+          <TextField name="password"  label="Password" type="password" autoComplete="current-password" variant="filled"  onChange={handleChange} InputProps={{
     endAdornment: (
       <InputAdornment>
           <VpnKeyIcon />
       </InputAdornment>
     )
   }}/>
-          <Button variant="contained" color="primary" size="large" onClick={LoginSubmit}>
+          <Button type="submit" variant="contained" color="primary" size="large" onClick={LoginSubmit}>
             Login
           </Button>
           <span>Don't have an account? <Link to="/signup">Sign Up</Link></span>
         </form>
-    </div>
-  );
+    </div>  );
 }
 
 export default Login;
