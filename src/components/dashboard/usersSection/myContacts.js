@@ -3,7 +3,7 @@ import axiosWithAuth from '../../axiosWithAuth';
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
-import FakeContact from './FakeContact';
+
 
 function MyContacts(){
     const [users,setUsers] = useState([])

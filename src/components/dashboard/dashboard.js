@@ -20,6 +20,7 @@ function Dashboard() {
     })
     console.log("CHAT is on")
 },[socket])
+console.log("socket", socket)
 
 
   const classes = useStyles();
