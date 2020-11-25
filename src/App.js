@@ -6,8 +6,8 @@ import Dashboard from './components/dashboard/dashboard';
 import PrivateRoute from './components/PrivateRoute';
 import {Context} from './components/Context'
 import './App.css'
-// import io from "socket.io-client"
-// const socket = io("http://localhost:5000")
+import io from "socket.io-client"
+const socket = io("http://localhost:5000")
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Context.Provider /*value={{socket}}*/>
+          <Context.Provider value={{socket}}>
               <Route  exact path="/" component={Login}/>
               <PrivateRoute path="/dashboard" component={Dashboard}/>
               <Route  path="/signup" component={SignUp}/>
