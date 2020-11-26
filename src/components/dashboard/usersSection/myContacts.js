@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 
 
-function MyContacts(){
+function MyContacts({setClickUserContact}){
     const [users,setUsers] = useState([])
     useEffect(()=>{
         axiosWithAuth().get('/api/users/all-users').then(result=>{
@@ -32,7 +32,13 @@ function MyContacts(){
         />
 
             {users.map(item=>(
-                <div className="user-collection-item" key={Math.floor(Math.random()*9999999)} onClick={()=>{localStorage.setItem('username',item.username); console.log("name clicked", item.username)}}>
+                // <div className="user-collection-item" key={Math.floor(Math.random()*9999999)} onClick={()=>{localStorage.setItem('username',item.username); console.log("name clicked", item.username)}}>
+                <div className="user-collection-item" key={Math.floor(Math.random()*9999999)} 
+                onClick={()=>{
+                    localStorage.setItem('receiver-username',item.username); 
+                    setClickUserContact(localStorage.getItem('receiver-username'))
+                    }}>
+
                     <div className="user-icon"></div>
                     <div>{item.name}</div>
                     

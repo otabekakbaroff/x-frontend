@@ -16,7 +16,7 @@ import Avatar from '@material-ui/core/Avatar';
 
 import useStyles from '../dash.styles'
 
-function UserProfilerHeader({clickContact,window, handleDrawerToggle, theme, mobileOpen, drawer}){
+function UserProfilerHeader({clickContact,window, handleDrawerToggle, theme, mobileOpen, drawer, clickUserContact}){
     const classes = useStyles();
     const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -33,9 +33,9 @@ function UserProfilerHeader({clickContact,window, handleDrawerToggle, theme, mob
           >
             <MenuIcon />
           </IconButton>
-          <Avatar onClick={clickContact} className={classes.orange}>N</Avatar>
+    <Avatar onClick={clickContact} className={classes.orange}>{clickUserContact&&clickUserContact[0].toUpperCase()}</Avatar>
           <Typography variant="h6" noWrap>
-            Nolan Moreland
+            {clickUserContact}
           </Typography>
           <div className={classes.grow2} />
           <IconButton color="inherit">

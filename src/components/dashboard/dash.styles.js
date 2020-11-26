@@ -1,7 +1,7 @@
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { deepOrange, deepPurple } from '@material-ui/core/colors';
 
-const drawerWidth = 340;
+const drawerWidth = 25;
 
 export default makeStyles((theme) => ({
     root: {
@@ -9,7 +9,7 @@ export default makeStyles((theme) => ({
     },
     drawer: {
       [theme.breakpoints.up('sm')]: {
-        width: drawerWidth,
+        width: `${drawerWidth}%`,
         flexShrink: 0,
         // border:"2px solid red"
         // boxShadow:"0px 5px 5px -4px #cacaca"
@@ -17,8 +17,8 @@ export default makeStyles((theme) => ({
     },
     appBar: {
       [theme.breakpoints.up('sm')]: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: drawerWidth,
+        width: `calc(100% - ${drawerWidth}%)`,
+        marginLeft: `${drawerWidth}%`,
       },
       background:"white",
       padding: "7px",
@@ -36,7 +36,7 @@ export default makeStyles((theme) => ({
     // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
-      width: drawerWidth,
+      width: `${drawerWidth}%`,
       boxShadow:"0px 0px 7px -4px rgb(193 169 185 / 87%)"
     },
     content: {
@@ -57,7 +57,7 @@ export default makeStyles((theme) => ({
     },
     appBar2: {
       [theme.breakpoints.up('sm')]: {
-        width: `calc(100% - ${drawerWidth}px)`,
+        width: `calc(100% - ${drawerWidth}%)`,
         marginLeft: drawerWidth,
       },
       background:"white",

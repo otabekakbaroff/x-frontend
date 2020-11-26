@@ -1,5 +1,5 @@
 :root {
-  --drawerWidth: 340px;
+  --drawerWidth: 25%;
 }
 
 *{
@@ -202,7 +202,7 @@ max-height: 100%;
   /* border: solid 0.1px #cacaca; */
   border-left: none;
   border-top: none;
-  height: 958px;
+  /* height: 958px; */
 }
 .user-icon{
   width:75px;

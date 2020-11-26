@@ -1,12 +1,12 @@
-import React from 'react';
 import MyProfile from './myProfile';
 import MyContacts from './myContacts';
 
-function Users(){
+function Users({loggedName, clickUserContact,setClickUserContact}){
+
     return(
         <div className="users">
-            <MyProfile/>
-            <MyContacts/>
+            <MyProfile loggedName={loggedName}/>
+            <MyContacts clickUserContact={clickUserContact} setClickUserContact={setClickUserContact}/>
         </div>
     )
 }

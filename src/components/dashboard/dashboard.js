@@ -9,7 +9,12 @@ import useStyles from './dash.styles'
 
 
 function Dashboard() {
+    const [clickUserContact, setClickUserContact]=useState()
+    const [mobileOpen, setMobileOpen] = useState(false);
   const socket=useContext(Context).socket;
+  const loggedName=useContext(Context).loggedName
+  const classes = useStyles();
+  const theme = useTheme();
   useEffect(()=>{
     socket.on('confirm', function(data){
         localStorage.setItem('username', data)
@@ -20,12 +25,9 @@ function Dashboard() {
     })
     console.log("CHAT is on")
 },[socket])
-console.log("socket", socket)
 
 
-  const classes = useStyles();
-  const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = useState(false);
+
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -34,7 +36,10 @@ console.log("socket", socket)
   const drawer = (
     <div>
       {/* <div className={classes.toolbar} /> */}
-      <Users/>
+      <Users 
+      clickUserContact={clickUserContact}
+      setClickUserContact={setClickUserContact}
+      loggedName={loggedName}/>
     </div>
   );
 
@@ -46,6 +51,8 @@ console.log("socket", socket)
       mobileOpen={mobileOpen}
       theme={theme}
       handleDrawerToggle={handleDrawerToggle}
+      clickUserContact={clickUserContact}
+      setClickUserContact={setClickUserContact}
       />
     </div>
   );

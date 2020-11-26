@@ -36,22 +36,35 @@ code {
 
 }
 
-.nthType:nth-child(even){flex-direction: row-reverse}
+/* .nthType:nth-child(even){flex-direction: row-reverse}
 .nthType:nth-child(even) .chatbubbles{flex-direction: row-reverse}
 .nthType:nth-child(odd) .bubble {
   border-radius: 20px 20px 20px 0px !important;
+} */
+
+[data-myname]{
+  flex-direction: row-reverse
 }
-.nthType:nth-child(odd) .avi {
+[data-myname] .chatbubbles{flex-direction: row-reverse}
+[data-theirname] .bubble{
+  border-radius: 20px 20px 20px 0px !important;
+}
+
+[data-myname] .avi {
+  background: palevioletred;
+}
+
+
+/* [data-aviavi]{
+  background-color: purple!important;
+} */
+
+/* .nthType:nth-child(odd) .avi {
   background: seagreen;
 }
 
 .nthType:nth-child(even) .avi {
   background: orangered;
-}
-
-/* .makeStyles-content-14 {
-  padding: 0!important;
-  flex-grow: 1;
 } */
 
 
