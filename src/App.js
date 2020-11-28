@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './components/authPage/login';
 import SignUp from './components/authPage/register';
@@ -11,6 +11,7 @@ const socket = io("http://localhost:5000")
 
 
 function App() {
+  const[loggedName, setLoggedName]=useState()
   // useEffect(()=>{
   //   socket.on('confirm', function(data){
   //       console.log(data)
@@ -20,7 +21,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Context.Provider value={{socket}}>
+          <Context.Provider value={{socket, setLoggedName, loggedName}}>
               <Route  exact path="/" component={Login}/>
               <PrivateRoute path="/dashboard" component={Dashboard}/>
               <Route  path="/signup" component={SignUp}/>

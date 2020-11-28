@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 function Login(props) {
   const classes = useStyles();
   const socket=useContext(Context).socket;
+  const setLoggedName=useContext(Context).setLoggedName
   const [login,setLogin]=useState({
     username:'',
     password:''
@@ -39,6 +40,8 @@ function Login(props) {
     e.preventDefault()
       axiosWithAuth().post('/api/users/login', login)
       .then(response=>{
+        localStorage.setItem('myname',response.data.user.name);
+        setLoggedName(response.data.user.name)
           localStorage.setItem('token',response.data.token);
           socket.emit('user-info',response.data.user.username)
           props.history.push("/dashboard");
