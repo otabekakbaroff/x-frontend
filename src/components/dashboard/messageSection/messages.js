@@ -38,10 +38,9 @@ function Messages({handleDrawerToggle, theme, mobileOpen, drawer, clickUserConta
         max-width: 330px ;
         background: white ;
         border-radius:  20px 20px 0px 20px ;
-        margin:10;
+        margin:20px;
         padding:0;
-        box-shadow:  1px 2px 6px 6px rgb(0 0 0 / 0%), -1px 1px 5px 0px rgb(0 0 0 / 8%), 0px 1px 10px 0px rgb(255 21 248 / 6%) 
-
+        box-shadow: 1px 2px 6px 6px rgb(0 0 0 / 0%), -1px 1px 5px 0px rgb(0 0 0 / 8%), 0px 1px 10px 0px rgb(255 21 248 / 6%)
     `
     const avatar=`
         width:50px;
@@ -55,16 +54,38 @@ function Messages({handleDrawerToggle, theme, mobileOpen, drawer, clickUserConta
         display:inline-flex
     `    
 
+    const shadow = `
+    box-shadow: 1px 2px 6px 6px rgb(0 0 0 / 0%), -1px 1px 5px 0px rgb(0 0 0 / 8%), 0px 1px 10px 0px rgb(255 21 248 / 6%)`
 
-    function send(){
+
+    function send(something){
         let chatbox = document.querySelector(".contactprofile")
         let message = document.querySelector("#text").value
+// let imgadd= file ? :"down";
+let imgdiv = document.createElement("div");
+imgdiv.innerHTML = "This is a paragraph."
+
         socket.emit('private',{username:localStorage.getItem('receiver-username'),message:message})
 
-        chatbox.innerHTML += `<div class="nthType" data-myname style="`+chatContainer+`"><div class="avi" data-aviavi style="`+avatar+`">${localStorage.getItem('myname')[0].toUpperCase()}</div><div class="bubble" style="`+chatbubbles+`">${message}</div></div>`
- 
-        chatbox.scrollTo(0, chatbox.scrollHeight);
-        document.querySelector("#text").value=""
+        var x = document.createElement("IMG"); 
+            
+            x.setAttribute("src",file); 
+            
+            x.setAttribute("width", "200px"); 
+            x.setAttribute("alt", "GFG_Logo"); 
+
+        chatbox.innerHTML+=`${file ?`<div class="nthType" data-myname style="`+chatContainer+`">
+        <div class="bubble" style="`+imgbubble+`">
+          <img src="${file}" class="img" style="border-radius:inherit; width: 300px; max-height: 100%!important;"/> </div></div>`:""}`
+
+        chatbox.innerHTML += `<div class="nthType" data-myname style="`+chatContainer+`">
+        <div class="avi" data-aviavi style="`+avatar+`">${localStorage.getItem('myname')[0].toUpperCase()}</div>
+        <div class="bubble" style="`+chatbubbles+`">
+        ${message}</div></div>`
+        document.querySelector("#text").value="";
+        // document.querySelector(".img").style.height="200%";
+        document.documentElement.scrollTop = document.documentElement.scrollHeight;
+        setFile()
     }
 
 
@@ -72,7 +93,9 @@ function Messages({handleDrawerToggle, theme, mobileOpen, drawer, clickUserConta
         let chatbox = document.querySelector(".contactprofile")
         socket.on('private', function(data){
             chatbox.innerHTML += `<div class="nthType" data-theirname style="`+chatContainer+`"><div class="avi" style="`+avatar+`">${localStorage.getItem('receiver-username')[0].toUpperCase()}</div><div class="bubble" style="`+chatbubbles+`">${data.message}</div></div>`
-            chatbox.scrollTo(0, chatbox.scrollHeight);
+            // chatbox.scrollTo(0, chatbox.scrollHeight);
+            document.documentElement.scrollTop = document.documentElement.scrollHeight;
+
         })  
     },[socket])
 
@@ -87,6 +110,20 @@ function Messages({handleDrawerToggle, theme, mobileOpen, drawer, clickUserConta
     const clickContact=e=>{
         setIsClicked(!isClicked)
     }
+
+    const [file, setFile] = useState();
+
+    const UploadFile = (e) => {
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+      fileReader.onload = (e) => {
+        setFile(e.target.result);
+      };
+      console.log("file->", file)
+    };
+    
+
+
 
     return(
         <div className="messages">
@@ -108,20 +145,43 @@ function Messages({handleDrawerToggle, theme, mobileOpen, drawer, clickUserConta
         <div
        className="chat-box" style={{paddingBottom:"25px", paddingTop:"25px"}}> 
        <div className ="contactprofile" style={{display:"grid"}}></div>
-       </div>
+       {/* <img src={file} alt="Img" style={{width:"100%"}}></img> */}
+              </div>
         )} 
         <div className={classes.toolbar} />
 
       </main>
 
       <AppBar position="fixed" color="default" className={classes.appBar2}>
+          <div style={{position:"relative", left:"-160px"}}>
+          {/* {file && <img src={file} alt="Img" style={{width:"100px"}}></img>} */}
+          </div>
         <Toolbar>
           <IconButton color="inherit" aria-label="open drawer">
           <PhotoCameraIcon />
           </IconButton>
-          <IconButton color="inherit" aria-label="open drawer">
-          <PhotoLibraryIcon />
-          </IconButton>
+
+
+
+          <input
+          id="image"
+          className="input-hide"
+        type="file"
+        name="image"
+        onChange={UploadFile}
+        accept=".jpg,.png"
+        style={{display:"none"}}
+      ></input>
+
+
+    <IconButton color="inherit" aria-label="open drawer" >
+        <label htmlFor="image"> 
+                <PhotoLibraryIcon />
+        </label> 
+    </IconButton>
+
+    {file && <img src={file} alt="Img" style={{width:"50px"}}></img>}
+
           <IconButton color="inherit" aria-label="open drawer">
           <MicIcon />
           </IconButton>
@@ -131,11 +191,16 @@ function Messages({handleDrawerToggle, theme, mobileOpen, drawer, clickUserConta
            InputProps={{
                     endAdornment: (
                     <InputAdornment>
+                                                  {/* {file && <img src={file} alt="Img" style={{width:"100px"}}></img>} */}
+
                         <IconButton >
                             <EmojiEmotionsIcon />
                         </IconButton>
                     </InputAdornment>
-                )}}/>
+                )}}>
+                              {file && <img src={file} alt="Img" style={{width:"100px"}}></img>}
+
+                </TextField>
 
 <IconButton id="send-button"  onClick={send}>
                         <SendIcon style={activeButton}/>
