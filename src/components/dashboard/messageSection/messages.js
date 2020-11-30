@@ -58,7 +58,7 @@ function Messages({handleDrawerToggle, theme, mobileOpen, drawer, clickUserConta
     box-shadow: 1px 2px 6px 6px rgb(0 0 0 / 0%), -1px 1px 5px 0px rgb(0 0 0 / 8%), 0px 1px 10px 0px rgb(255 21 248 / 6%)`
 
 
-    function send(something){
+    function send(){
         let chatbox = document.querySelector(".contactprofile")
         let message = document.querySelector("#text").value
 // let imgadd= file ? :"down";
@@ -83,7 +83,6 @@ imgdiv.innerHTML = "This is a paragraph."
         <div class="bubble" style="`+chatbubbles+`">
         ${message}</div></div>`
         document.querySelector("#text").value="";
-        // document.querySelector(".img").style.height="200%";
         document.documentElement.scrollTop = document.documentElement.scrollHeight;
         setFile()
     }
@@ -92,8 +91,12 @@ imgdiv.innerHTML = "This is a paragraph."
     useEffect(()=>{
         let chatbox = document.querySelector(".contactprofile")
         socket.on('private', function(data){
+            chatbox.innerHTML += `${file?"yes":"no"}`
+            // chatbox.innerHTML+=`${file ?`<div class="nthType" data-myname style="`+chatContainer+`">
+            // <div class="bubble" style="`+imgbubble+`">
+            //   <img src="https://picsum.photos/200" class="img" style="border-radius:inherit; width: 300px; max-height: 100%!important;"/> </div></div>`:""}`
+    
             chatbox.innerHTML += `<div class="nthType" data-theirname style="`+chatContainer+`"><div class="avi" style="`+avatar+`">${localStorage.getItem('receiver-username')[0].toUpperCase()}</div><div class="bubble" style="`+chatbubbles+`">${data.message}</div></div>`
-            // chatbox.scrollTo(0, chatbox.scrollHeight);
             document.documentElement.scrollTop = document.documentElement.scrollHeight;
 
         })  
@@ -140,7 +143,7 @@ imgdiv.innerHTML = "This is a paragraph."
             <main className={classes.content}>
         <div className={classes.toolbar} />
  
-        {isClicked==true ? <ContactInfo clickContact={clickContact}/>: (
+        {isClicked===true ? <ContactInfo clickContact={clickContact}/>: (
            
         <div
        className="chat-box" style={{paddingBottom:"25px", paddingTop:"25px"}}> 
