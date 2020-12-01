@@ -69,7 +69,7 @@ body{
   color:rgb(112, 112, 112);
   width:fit-content;
 }
-form{
+.signup, .login form{
   background-color:white;
   text-align: center;
   display:flex;
@@ -184,9 +184,22 @@ max-height: 100%;
   border-left: none;
   border-top: none;
   height: 100px;
-
 }
 .my-profile h1{
+  margin: 10px;
+}
+
+.edit-my-profile{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  border-left: none;
+  border-top: none;
+
+}
+.edit-my-profile h1{
   margin: 10px;
 }
 

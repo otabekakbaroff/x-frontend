@@ -87,6 +87,7 @@ export default makeStyles((theme) => ({
       color: theme.palette.getContrastText(deepOrange[500]),
       backgroundColor: deepOrange[500],
       margin: theme.spacing(1),
+      cursor: "pointer"
     },
   }));
   

@@ -11,6 +11,7 @@ import useStyles from './dash.styles'
 function Dashboard() {
     const [clickUserContact, setClickUserContact]=useState()
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [switchPage, setSwitchPage] = useState("default")
   const socket=useContext(Context).socket;
   const loggedName=useContext(Context).loggedName
   const classes = useStyles();
@@ -38,8 +39,11 @@ function Dashboard() {
       {/* <div className={classes.toolbar} /> */}
       <Users 
       clickUserContact={clickUserContact}
+      switchPage={switchPage}
+      setSwitchPage={setSwitchPage}
       setClickUserContact={setClickUserContact}
       loggedName={loggedName}/>
+      
     </div>
   );
 
@@ -47,6 +51,8 @@ function Dashboard() {
     <div className={classes.root}>
       <CssBaseline />
       <Messages 
+      switchPage={switchPage}
+      setSwitchPage={setSwitchPage}
       drawer={drawer}
       mobileOpen={mobileOpen}
       theme={theme}

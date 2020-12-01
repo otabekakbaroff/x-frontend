@@ -17,46 +17,18 @@ import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
 import useStyles from '../dash.styles';
 import {chatbubbles, imgbubble, chatContainer, avatar} from '../chatstyles'
+import EditMyProfile from '../usersSection/editUser/EditMyProfile';
+import AddChatRoom from '../addChatRoom/AddChatRoom';
+import CallUser from '../Call/CallUser';
+import VideoCall from '../Call/VideoCall';
 
 
 
-function Messages({handleDrawerToggle, theme, mobileOpen, drawer, clickUserContact,setClickUserContact }){
+function Messages({handleDrawerToggle, theme, mobileOpen, drawer, clickUserContact,setClickUserContact, switchPage, setSwitchPage }){
     const [activeButton,setActiveButton] = useState([]);
     const socket=useContext(Context).socket;
     const [isClicked, setIsClicked]=useState(false)
     const classes = useStyles();
-
-
-    // const chatbubbles=`
-    //     max-width: 330px;
-    //     background: white ;
-    //     border-radius:  20px 20px 0px;
-    //     margin:10px;
-    //     padding:10px;
-    //     box-shadow:  1px 2px 6px 6px rgb(0 0 0 / 0%), -1px 1px 5px 0px rgb(0 0 0 / 8%), 0px 1px 10px 0px rgb(255 21 248 / 6%) 
-    // `
-    // const imgbubble=`
-    //     max-width: 330px ;
-    //     background: white ;
-    //     border-radius:  20px 20px 0px 20px ;
-    //     margin:20px;
-    //     padding:0;
-    //     box-shadow: 1px 2px 6px 6px rgb(0 0 0 / 0%), -1px 1px 5px 0px rgb(0 0 0 / 8%), 0px 1px 10px 0px rgb(255 21 248 / 6%)
-    // `
-    // const avatar=`
-    //     width:50px;
-    //     height:50px;
-    //     border-radius:50%;
-    //     margin-top:35px;
-    //     color: white;
-    //     font-size: 2.5em;
-    // `
-    // const chatContainer=`
-    //     display:inline-flex
-    // `    
-
-    // const shadow = `
-    // box-shadow: 1px 2px 6px 6px rgb(0 0 0 / 0%), -1px 1px 5px 0px rgb(0 0 0 / 8%), 0px 1px 10px 0px rgb(255 21 248 / 6%)`
 
 
     function send(){
@@ -126,11 +98,39 @@ imgdiv.innerHTML = "This is a paragraph."
     };
     
 
+    const switchPages=()=>{
+        if(switchPage == "default"){
+            return (        <div
+                className="chat-box" style={{paddingBottom:"25px", paddingTop:"25px"}}> 
+                <div className ="contactprofile" style={{display:"grid"}}></div>
+                       </div>)
+        }
+        else if(switchPage=="user-profile-details"){
+            return <ContactInfo/>
+        }
+        else if(switchPage == "edit-my-profile"){
+            return <EditMyProfile/>
+        }
+        else if (switchPage == "add-chat-room"){
+            return <AddChatRoom/>
+        }
+        else if (switchPage == "call"){
+            return <CallUser/>
+        }
+        else if (switchPage == "videocall"){
+            return <VideoCall/>
+        }
+
+
+    }
+
+
 
 
     return(
         <div className="messages">
             <ProfileHeader 
+            setSwitchPage={setSwitchPage}
             mobileOpen={mobileOpen}
             drawer={drawer}
             setClickUserContact={setClickUserContact}
@@ -142,15 +142,23 @@ imgdiv.innerHTML = "This is a paragraph."
 
             <main className={classes.content}>
         <div className={classes.toolbar} />
- 
-        {isClicked===true ? <ContactInfo clickContact={clickContact}/>: (
+
+        {/* <ContactInfo clickContact={clickContact}/> */}
+
+
+ <div style={{padding: "50px 5%"}}>
+
+{ switchPages()}
+</div>
+
+
+        {/* {isClicked===true ? <ContactInfo clickContact={clickContact}/>: (
            
         <div
        className="chat-box" style={{paddingBottom:"25px", paddingTop:"25px"}}> 
        <div className ="contactprofile" style={{display:"grid"}}></div>
-       {/* <img src={file} alt="Img" style={{width:"100%"}}></img> */}
               </div>
-        )} 
+        )}  */}
         <div className={classes.toolbar} />
 
       </main>

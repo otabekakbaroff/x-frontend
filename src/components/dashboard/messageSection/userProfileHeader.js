@@ -16,7 +16,7 @@ import Avatar from '@material-ui/core/Avatar';
 
 import useStyles from '../dash.styles'
 
-function UserProfilerHeader({clickContact,window, handleDrawerToggle, theme, mobileOpen, drawer, clickUserContact}){
+function UserProfilerHeader({clickContact,window, handleDrawerToggle, theme, mobileOpen, drawer, clickUserContact, setSwitchPage}){
     const classes = useStyles();
     const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -33,7 +33,10 @@ function UserProfilerHeader({clickContact,window, handleDrawerToggle, theme, mob
           >
             <MenuIcon />
           </IconButton>
-    <Avatar onClick={clickContact} className={classes.orange}>{clickUserContact&&clickUserContact[0].toUpperCase()}</Avatar>
+    <Avatar 
+    onClick={()=>setSwitchPage("user-profile-details")}
+    // onClick={clickContact} 
+    className={classes.orange}>{clickUserContact&&clickUserContact[0].toUpperCase()}</Avatar>
           <Typography variant="h6" noWrap>
             {clickUserContact?clickUserContact:"Main Room"}
           </Typography>
@@ -41,13 +44,13 @@ function UserProfilerHeader({clickContact,window, handleDrawerToggle, theme, mob
           <IconButton color="inherit">
             <SearchIcon />
           </IconButton>
-          <IconButton color="inherit">
+          {/* <IconButton color="inherit">
           <PersonAddIcon/>
-          </IconButton>
-          <IconButton color="inherit">
+          </IconButton> */}
+          <IconButton color="inherit" onClick={()=>setSwitchPage("call")}>
           <CallIcon />
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={()=>setSwitchPage("videocall")}>
           <VideocamIcon/>
           </IconButton>
           <IconButton edge="end" color="inherit">
