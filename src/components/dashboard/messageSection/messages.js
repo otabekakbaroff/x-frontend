@@ -9,18 +9,19 @@ import MicIcon from '@material-ui/icons/Mic';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
-import DemoChatMessages from './DemoChatMessages'
 import ContactInfo from './contactInfo/ContactInfo'
 import Toolbar from '@material-ui/core/Toolbar';
 
 
 import AppBar from '@material-ui/core/AppBar';
+
 import useStyles from '../dash.styles';
 import {chatbubbles, imgbubble, chatContainer, avatar} from '../chatstyles'
 import EditMyProfile from '../usersSection/editUser/EditMyProfile';
 import AddChatRoom from '../addChatRoom/AddChatRoom';
 import CallUser from '../Call/CallUser';
 import VideoCall from '../Call/VideoCall';
+
 
 
 
@@ -32,6 +33,7 @@ function Messages({handleDrawerToggle, theme, mobileOpen, drawer, clickUserConta
 
 
     function send(){
+
         let chatbox = document.querySelector(".contactprofile")
         let message = document.querySelector("#text").value
 // let imgadd= file ? :"down";
@@ -39,6 +41,7 @@ let imgdiv = document.createElement("div");
 imgdiv.innerHTML = "This is a paragraph."
 
         socket.emit('private',{username:localStorage.getItem('receiver-username'),message:message})
+
 
         var x = document.createElement("IMG"); 
             
@@ -58,12 +61,15 @@ imgdiv.innerHTML = "This is a paragraph."
         document.querySelector("#text").value="";
         document.documentElement.scrollTop = document.documentElement.scrollHeight;
         setFile()
+
     }
 
 
     useEffect(()=>{
         let chatbox = document.querySelector(".contactprofile")
+
         socket.on('private', function(data){
+
             // chatbox.innerHTML+=`${file ?`<div class="nthType" data-myname style="`+chatContainer+`">
             // <div class="bubble" style="`+imgbubble+`">
             //   <img src="https://picsum.photos/200" class="img" style="border-radius:inherit; width: 300px; max-height: 100%!important;"/> </div></div>`:""}`
@@ -82,7 +88,7 @@ imgdiv.innerHTML = "This is a paragraph."
         }
     }
 
-    const clickContact=e=>{
+    const clickContact=()=>{
         setIsClicked(!isClicked)
     }
 
@@ -153,6 +159,7 @@ imgdiv.innerHTML = "This is a paragraph."
 
 
         {/* {isClicked===true ? <ContactInfo clickContact={clickContact}/>: (
+
            
         <div
        className="chat-box" style={{paddingBottom:"25px", paddingTop:"25px"}}> 
@@ -225,19 +232,3 @@ imgdiv.innerHTML = "This is a paragraph."
 }
 
 export default Messages
-
-
-export function Chat(){
-    return(
-    <div className="chat-box original" style={{paddingTop:"25px"}}>
-    <DemoChatMessages/>
-</div>
-)
-}
-
-
-
-
-
-
-
