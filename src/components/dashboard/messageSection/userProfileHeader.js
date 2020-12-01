@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Avatar from '@material-ui/core/Avatar';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+
 
 import useStyles from '../dash.styles'
 
@@ -75,6 +77,12 @@ function UserProfilerHeader({clickContact,window, handleDrawerToggle, theme, mob
               keepMounted: true, // Better open performance on mobile.
             }}
           >
+                            <IconButton className={classes.drawerHeader}
+                onClick={handleDrawerToggle}
+                >
+      <ChevronLeftIcon />
+    </IconButton>
+           
             {drawer}
           </Drawer>
         </Hidden>
@@ -85,7 +93,7 @@ function UserProfilerHeader({clickContact,window, handleDrawerToggle, theme, mob
             }}
             variant="permanent"
             open
-          >
+          > 
             {drawer}
           </Drawer>
         </Hidden>

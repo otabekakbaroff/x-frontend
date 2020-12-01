@@ -14,6 +14,7 @@ import ContactInfo from './contactInfo/ContactInfo'
 import Toolbar from '@material-ui/core/Toolbar';
 
 
+
 import AppBar from '@material-ui/core/AppBar';
 import useStyles from '../dash.styles';
 import {chatbubbles, imgbubble, chatContainer, avatar} from '../chatstyles'
@@ -120,8 +121,6 @@ imgdiv.innerHTML = "This is a paragraph."
         else if (switchPage == "videocall"){
             return <VideoCall/>
         }
-
-
     }
 
 
@@ -165,7 +164,6 @@ imgdiv.innerHTML = "This is a paragraph."
 
       <AppBar position="fixed" color="default" className={classes.appBar2}>
           <div style={{position:"relative", left:"-160px"}}>
-          {/* {file && <img src={file} alt="Img" style={{width:"100px"}}></img>} */}
           </div>
         <Toolbar>
           <IconButton color="inherit" aria-label="open drawer">
