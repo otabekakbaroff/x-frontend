@@ -36,12 +36,6 @@ code {
 
 }
 
-/* .nthType:nth-child(even){flex-direction: row-reverse}
-.nthType:nth-child(even) .chatbubbles{flex-direction: row-reverse}
-.nthType:nth-child(odd) .bubble {
-  border-radius: 20px 20px 20px 0px !important;
-} */
-
 [data-myname]{
   flex-direction: row-reverse
 }
@@ -49,6 +43,7 @@ code {
 [data-theirname] .bubble{
   border-radius: 20px 20px 20px 0px !important;
 }
+
 
 [data-myname] .avi {
   background: palevioletred;
@@ -82,9 +77,7 @@ code {
 
 
  @media only screen and (max-width: 599px) {
-  /* .users{
-    display: none;
-  } */
+
   .messages {
     width: 100%;
     margin-left: 0px !important;

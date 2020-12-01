@@ -40,7 +40,9 @@ function UserProfilerHeader({clickContact,window, handleDrawerToggle, theme, mob
     // onClick={clickContact} 
     className={classes.orange}>{clickUserContact&&clickUserContact[0].toUpperCase()}</Avatar>
           <Typography variant="h6" noWrap>
+
             {clickUserContact?clickUserContact:"Main Room"}
+
           </Typography>
           <div className={classes.grow2} />
           <IconButton color="inherit">

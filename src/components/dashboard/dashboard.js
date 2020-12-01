@@ -36,7 +36,6 @@ function Dashboard() {
 
   const drawer = (
     <div>
-      {/* <div className={classes.toolbar} /> */}
       <Users 
       clickUserContact={clickUserContact}
       switchPage={switchPage}
