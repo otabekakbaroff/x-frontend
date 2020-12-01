@@ -89,5 +89,12 @@ export default makeStyles((theme) => ({
       margin: theme.spacing(1),
       cursor: "pointer"
     },
+    drawerHeader: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+      padding: '0 8px',
+      ...theme.mixins.toolbar,
+    },
   }));
   
