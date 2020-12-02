@@ -1,5 +1,6 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import axiosWithAuth from '../axiosWithAuth'
+import {Context} from '../Context'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -9,6 +10,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import FaceIcon from '@material-ui/icons/Face';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -21,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Register(props){
     const classes = useStyles();
+    const socket = useContext(Context).socket;
     const [signup,setSignup]=useState({
         name:'',
         username:'',
@@ -33,10 +36,11 @@ function Register(props){
       }) 
     }
     const LoginSubmit=e=>{
-        axiosWithAuth().post('/api/users/register', signup)
+      e.preventDefault()
+      axiosWithAuth().post('/api/users/register', signup)
         .then(response=>{
-            console.log(response)
             localStorage.setItem('token',response.data.token);
+            socket.emit('user-info', signup.username)
             props.history.push("/dashboard");
         })
         .catch(err=>{
@@ -47,28 +51,28 @@ function Register(props){
         <div className="signup">
             <form className={classes.root} noValidate autoComplete="off">
                 <h1>Sign Up</h1>
-                <TextField label="Displayed Name" variant="filled" onChange={handleChange} InputProps={{
+                <TextField name="name" label="Displayed Name" variant="filled" onChange={handleChange} InputProps={{
     endAdornment: (
       <InputAdornment>
           <FaceIcon />
       </InputAdornment>
     )
   }}/>
-                <TextField label="Username" variant="filled" onChange={handleChange} InputProps={{
+                <TextField name="username" label="Username" variant="filled" onChange={handleChange} InputProps={{
     endAdornment: (
       <InputAdornment>
           <AccountCircleIcon />
       </InputAdornment>
     )
   }}/>
-                <TextField label="Password" type="password" autoComplete="current-password" variant="filled" onChange={handleChange} InputProps={{
+                <TextField name="password" label="Password" type="password" autoComplete="current-password" variant="filled" onChange={handleChange} InputProps={{
     endAdornment: (
       <InputAdornment>
           <VpnKeyIcon />
       </InputAdornment>
     )
   }}/>
-                <Button type="submit" variant="contained" color="primary" size="large" onChange={LoginSubmit}>
+                <Button type="submit" variant="contained" color="primary" size="large" onClick={LoginSubmit}>
                     Sign up
                 </Button>
                 <span>Have an account? <Link to="/">Login</Link></span>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './components/authPage/login';
 import SignUp from './components/authPage/register';
@@ -11,11 +11,12 @@ const socket = io("http://localhost:5000")
 
 
 function App() {
+  const [receiver, setReceiver] = useState('')
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Context.Provider value={{socket}}>
+          <Context.Provider value={{socket,receiver,setReceiver}}>
               <Route  exact path="/" component={Login}/>
               <Route  path="/signup" component={SignUp}/>
               <PrivateRoute path="/dashboard" component={Dashboard}/>
