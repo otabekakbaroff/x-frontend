@@ -1,10 +1,13 @@
-import React,{useEffect,useContext} from 'react'
-import Users from './usersSection/users';
-import Messages from './messageSection/messages'
-import {Context} from '.././Context'
+import React,{useEffect,useState} from 'react'
+import Users from './users/Users';
+import Messages from './messages/Messages'
+import {Context} from '../Context'
+import io from "socket.io-client"
+const socket = io("http://localhost:5000")
 
 function Dashboard(){
-    const socket=useContext(Context).socket;
+    const [receiver, setReceiver] = useState(localStorage.getItem('receiver-username'))
+
     useEffect(()=>{
         socket.on('confirm', function(data){
             localStorage.setItem('username', data)
@@ -14,10 +17,13 @@ function Dashboard(){
             socket.emit('reconnection',localStorage.getItem('username'))
         })
     },[socket])
+
     return(
         <div className="dashboard">
-            <Users/>
-            <Messages/>
+            <Context.Provider value={{socket,receiver, setReceiver}}>
+                <Users/>
+                <Messages/>
+            </Context.Provider> 
         </div>
     )
 }
