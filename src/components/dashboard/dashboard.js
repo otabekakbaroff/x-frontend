@@ -26,7 +26,7 @@ function Dashboard(){
     return(
         <div className="dashboard">
             <Context.Provider value={{socket,receiver, theme, setReceiver, setLoggedName}}>
-                <Users/>
+                {/* <Users/> */}
                 <Messages/>
             </Context.Provider> 
         </div>

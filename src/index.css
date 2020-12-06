@@ -427,6 +427,7 @@ code {
   display: none;
 }
 
+
 @media screen and (max-width: 900px) {
   .expand-btn {
     display: block;

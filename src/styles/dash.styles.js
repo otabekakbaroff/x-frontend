@@ -25,6 +25,7 @@ export default makeStyles((theme) => ({
       color: "darkgrey",
       boxShadow: "0px 2px 4px -1px rgba(245, 0, 87, 0.04), 0px 4px 5px 0px rgba(245, 0, 87, 0.04), 0px 1px 10px 0px rgba(0,0,0,0.12)",
       // boxShadow:"red"
+      zIndex:0
 
     },
     menuButton: {
@@ -37,7 +38,8 @@ export default makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
       width: `${drawerWidth}%`,
-      boxShadow:"0px 0px 7px -4px rgb(193 169 185 / 87%)"
+      boxShadow:"0px 0px 7px -4px rgb(193 169 185 / 87%)", 
+      zIndex:1
     },
     content: {
       // flexGrow: 1,
@@ -66,6 +68,7 @@ export default makeStyles((theme) => ({
       top: 'auto',
       color:"darkgrey",
       bottom: 0,
+      zIndex:0
     },
     grow2: {
       flexGrow: 1,

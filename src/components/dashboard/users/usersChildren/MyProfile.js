@@ -68,7 +68,8 @@ function MyProfile(){
                  style = {
                      {
                          overlay: {
-                             backgroundColor: 'grey'
+                             backgroundColor: '#808080cf',
+                             zIndex:1
                          },
                          content: {
                             top: '50px',

@@ -8,7 +8,7 @@ import Sendbox from './messagesChildren/Sendbox'
 function Messages(){
     return(
         <div className="messages">
-            <Header/>
+            <Header />
             <Chatbox/>
             <Sendbox/>
         </div>
