@@ -1,4 +1,4 @@
-import {stringToColor} from '../resources/utils/stringToColor'
+import {stringToColor} from '../components/resources/utils/stringToColor'
 
 
 

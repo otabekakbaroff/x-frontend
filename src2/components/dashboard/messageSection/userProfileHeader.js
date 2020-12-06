@@ -16,7 +16,7 @@ import Avatar from '@material-ui/core/Avatar';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 
-import useStyles from '../dash.styles'
+import useStyles from '../../../../src/styles/dash.styles'
 
 function UserProfilerHeader({clickContact,window, handleDrawerToggle, theme, mobileOpen, drawer, clickUserContact, setSwitchPage}){
     const classes = useStyles();

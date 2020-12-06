@@ -32,7 +32,6 @@ function MyContacts({setClickUserContact}){
         />
 
             {users.map(item=>(
-                // <div className="user-collection-item" key={Math.floor(Math.random()*9999999)} onClick={()=>{localStorage.setItem('username',item.username); console.log("name clicked", item.username)}}>
                 <div className="user-collection-item" key={Math.floor(Math.random()*9999999)} 
                 onClick={()=>{
                     localStorage.setItem('receiver-username',item.username); 

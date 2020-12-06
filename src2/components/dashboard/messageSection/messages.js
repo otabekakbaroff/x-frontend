@@ -16,8 +16,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 
 import AppBar from '@material-ui/core/AppBar';
 
-import useStyles from '../dash.styles';
-import {chatbubbles, imgbubble, chatContainer, avatar} from '../chatstyles'
+import useStyles from '../../../../src/styles/dash.styles';
+import {chatbubbles, imgbubble, chatContainer, avatar} from '../../../../src/styles/chatstyles'
 import EditMyProfile from '../usersSection/editUser/EditMyProfile';
 import AddChatRoom from '../addChatRoom/AddChatRoom';
 import CallUser from '../Call/CallUser';
