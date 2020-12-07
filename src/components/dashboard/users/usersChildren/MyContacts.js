@@ -11,7 +11,7 @@ function MyContacts(){
 
     useEffect(()=>{
         axiosWithAuth().get(`/api/connections/${localStorage.getItem('username')}/friends-list`).then(result=>{
-            console.log(result)
+            console.log("result", result)
             setUsers(result.data)
         }).catch(error=>{
             console.log(localStorage.getItem('username'))
@@ -26,10 +26,18 @@ function MyContacts(){
 
                 {users.map(item=>(
                     <div className="user-collection-item" key={Math.floor(Math.random()*99999999)} onClick={()=>{setReceiver(item.from);localStorage.setItem('receiver-username',item.from)}}>
+                        {console.log("ITEM", item)}
                         <div className="user-icon"></div>
-                        <div>{item.username}</div>
+                        <div>{item.from}</div>
                     </div>
                 ))}
+
+<div className="user-collection-item" key={Math.floor(Math.random()*99999999)} 
+// onClick={()=>{setReceiver(item.from);localStorage.setItem('receiver-username',item.from)}}
+>
+                        <div className="user-icon"></div>
+                        <div>Hello there</div>
+                    </div>
                 
             </div>
         )

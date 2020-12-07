@@ -25,9 +25,11 @@ function MyProfile(){
     },[])
 
     function accept_friend_request(e){
-        axiosWithAuth().put(`/api/connections/${e.target.name}/request-reply`, {status:2}).then(resp=>{
+        axiosWithAuth().put(`/api/connections/${e.target.id}/request-reply`, {from:localStorage.getItem('username'), to:e.target.name, status:2}).then(resp=>{
             console.log('success')
         })
+        console.log("target----->", e.target.id)
+
     }
 
     function decline_friend_request(e){
@@ -69,7 +71,7 @@ function MyProfile(){
                      {
                          overlay: {
                              backgroundColor: '#808080cf',
-                             zIndex:1
+                             zIndex:1400
                          },
                          content: {
                             top: '50px',
@@ -87,8 +89,8 @@ function MyProfile(){
                             <div key={item.id} className="friend-request-item">
                                 <div className="user-icon"></div>
                                 <p>{item.from} wants to be friends with you...</p>
-                                <button id="accept-button" onClick={accept_friend_request} name={item.id}>Accept</button>
-                                <button id="decline-button" onClick={decline_friend_request} name={item.id}>Decline</button>
+                                <button className="accept-button" onClick={accept_friend_request} id={item.id} name={item.from}>Accept</button>
+                                <button className="decline-button" onClick={decline_friend_request} id={item.id}>Decline</button>
                             </div>
                         ))}
                     </div>

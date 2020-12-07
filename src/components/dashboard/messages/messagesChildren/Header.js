@@ -16,33 +16,7 @@ import axiosWithAuth from '../../../axiosWithAuth';
 //     //         setMyMessages(result.data)
 //     //     })
 //     // },[receiver])
-//     return (
-//             <div>
-//                 <div className="profile-header">
-//                     <div className="profile_details">
-//                         <div className="icon"></div>
-//                         <div className="name"><h1>{receiver || localStorage.getItem('receiver-username')}</h1></div>
-//                     </div>
-//                     <div className="comm-icons">
-//                         <IconButton >
-//                             <SearchIcon/>
-//                         </IconButton>
-//                         <IconButton >
-//                             <CallIcon/>
-//                         </IconButton>
-//                         <IconButton >
-//                             <VideocamIcon/>
-//                         </IconButton>
-//                         <IconButton >
-//                             <MoreVertIcon/>
-//                         </IconButton>
-//                     </div>
-//                 </div>
-//             </div>
-//         )
-// }
 
-// export default Header;
 
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
@@ -60,10 +34,14 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import useStyles from '../../../../styles/dash.styles'
 import Users from '../../../../../src/components/dashboard/users/Users';
 
-function Header({window, handleDrawerToggle, mobileOpen, drawer, clickUserContact, setSwitchPage}){
+function Header({window, drawer, clickUserContact, setSwitchPage}){
+    const receiver=useContext(Context).receiver;
+    const [myMessages,setMyMessages] = useState([])
     const classes = useStyles();
     const container = window !== undefined ? () => window().document.body : undefined;
     const theme= useContext(Context).theme;
+    const handleDrawerToggle= useContext(Context).handleDrawerToggle;
+    const mobileOpen= useContext(Context).mobileOpen;
 
     return (
         <div>
@@ -84,7 +62,8 @@ function Header({window, handleDrawerToggle, mobileOpen, drawer, clickUserContac
     className={classes.orange}>{clickUserContact&&clickUserContact[0].toUpperCase()}</Avatar>
           <Typography variant="h6" noWrap>
 
-            {clickUserContact?clickUserContact:"Main Room"}
+            {/* {clickUserContact?clickUserContact:"Main Room"} */}
+            {receiver || localStorage.getItem('receiver-username')}
 
           </Typography>
           <div className={classes.grow2} />
@@ -123,7 +102,6 @@ function Header({window, handleDrawerToggle, mobileOpen, drawer, clickUserContac
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-              drawer
                             <IconButton className={classes.drawerHeader}
                 onClick={handleDrawerToggle}
                 >
@@ -131,6 +109,7 @@ function Header({window, handleDrawerToggle, mobileOpen, drawer, clickUserContac
     </IconButton>
            
             {drawer}
+            <Users/>
           </Drawer>
         </Hidden>
         <Hidden xsDown implementation="css">

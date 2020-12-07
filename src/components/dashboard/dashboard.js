@@ -9,6 +9,7 @@ import Sendbox from './messages/messagesChildren/Sendbox';
 const socket = io("http://localhost:5000")
 
 function Dashboard(){
+    const [mobileOpen, setMobileOpen] = useState(false);
     const [receiver, setReceiver] = useState(localStorage.getItem('receiver-username'))
     const[loggedName, setLoggedName]=useState()
     const theme = useTheme();
@@ -23,9 +24,16 @@ function Dashboard(){
         })
     },[socket])
 
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
+        console.log("I clicked on the menu bar thingy")
+      };
+
+      console.log("mobileopen?", mobileOpen)
+
     return(
         <div className="dashboard">
-            <Context.Provider value={{socket,receiver, theme, setReceiver, setLoggedName}}>
+            <Context.Provider value={{socket,receiver, theme, setReceiver, setLoggedName, handleDrawerToggle, mobileOpen}}>
                 {/* <Users/> */}
                 <Messages/>
             </Context.Provider> 
