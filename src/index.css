@@ -36,16 +36,16 @@ code {
 
 }
 
-[data-myname]{
+[data-value="myname"]{
   flex-direction: row-reverse
 }
-[data-myname] .chatbubbles{flex-direction: row-reverse}
-[data-theirname] .bubble{
+[data-value="myname"] .chatbubbles{flex-direction: row-reverse}
+[data-value="theirname"] .bubble{
   border-radius: 20px 20px 20px 0px !important;
 }
 
 
-[data-myname] .avi {
+[data-value="myname"] .avi {
   background: palevioletred;
 }
 

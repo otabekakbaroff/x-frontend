@@ -172,7 +172,7 @@ max-height: 100%;
 }
 .chat-box{
   background-color: #fafafa;
-  /* min-height: 85vh; */
+  min-height: 65vh;
   padding: 0% 5%;
 }
 

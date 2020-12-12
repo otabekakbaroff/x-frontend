@@ -1,15 +1,5 @@
-// import React from 'react'
-
-// export default function Sendbox() {
-//     return (
-//         <div style={{height:"200px", background:"yellow"}} >
-//             Sendbox
-            
-//         </div>
-//     )
-// }
-
-import React from 'react'
+import React,{useEffect,useContext, useState} from 'react'
+import {Context} from '../../../Context'
 import SendIcon from '@material-ui/icons/Send';
 import IconButton from "@material-ui/core/IconButton";
 import TextField from '@material-ui/core/TextField';
@@ -23,11 +13,71 @@ import Toolbar from '@material-ui/core/Toolbar';
 
 import AppBar from '@material-ui/core/AppBar';
 
+import {stringToColor} from '../../../resources/utils/stringToColor';
 import useStyles from '../../../../styles/dash.styles';
+import {chatbubbles, imgbubble, chatContainer, avatar} from '../../../../styles/chatstyles'
 
 
 function SendBox(){
     const classes = useStyles();
+    const [activeButton,setActiveButton] = useState([]);
+    const [message, setMessage]=useState({
+      // username:localStorage.getItem('username'), 
+      // receiver_username:localStorage.getItem('receiver-username'),
+      // message:"",
+      // date:Date.now()
+      
+        from: localStorage.getItem('username'),
+        to: localStorage.getItem('receiver-username'),
+        message: "",
+        date: Date.now()
+       
+    })
+    const socket = useContext(Context).socket;
+
+
+
+    function send(e){
+      setMessage({
+        ...message,
+        date:Date.now()
+      })
+      let chatbox = document.querySelector(".contactprofile")
+      let message1 = document.querySelector("#text").value
+      socket.emit('private',message, {date:Date.now()})
+      // socket.emit('private',{from:localStorage.getItem('username'),to:localStorage.getItem('receiver-username'),message:message,date:Date.now()})
+ 
+      chatbox.innerHTML += `<div class="nthType" data-value="myname" style="`+chatContainer+`">
+        <div class="avi" data-aviavi style="`+avatar("myname")+`">${localStorage.getItem('myname')[0].toUpperCase()}</div>
+        <div class="bubble" style="`+chatbubbles+`">
+        ${message1}</div></div>`
+
+    //     chatbox.innerHTML += `<div class="nthType ${classes.data_name}" data-value="myname">
+    //     <div class="avi ${classes.avi_pic}" style="background: ${stringToColor(localStorage.getItem('myname'))}">${localStorage.getItem('myname')[0].toUpperCase()}</div>
+    //     <div class="bubble ${classes.bubble_style}">
+    // ${message1}
+    //     </div>
+    //     </div>`
+
+
+        document.querySelector("#text").value="";
+        document.documentElement.scrollTop = document.documentElement.scrollHeight;
+
+
+  }
+
+
+    const handleChange = (e) =>{
+      // if(e.target.value){
+      //     setActiveButton({fill: "#478dff",transform: `rotate(-45deg)`})
+      // }else{
+      //     setActiveButton({})
+      // }
+      setMessage({
+        ...message,
+        [e.target.name]:e.target.value
+      })
+  }
     return (
         <AppBar position="fixed" color="default" className={classes.appBar2}>
         <div style={{position:"relative", left:"-160px"}}>
@@ -64,7 +114,8 @@ function SendBox(){
 
         <TextField id="text" className="textareawidth" color="inherit" 
          label="Type here..." variant="outlined" 
-        //  onChange={handleChange}
+         name="message"
+         onChange={handleChange}
          InputProps={{
                   endAdornment: (
                   <InputAdornment>
@@ -80,10 +131,10 @@ function SendBox(){
               </TextField>
 
 <IconButton id="send-button"  
-// onClick={send}
+onClick={send}
 >
                       <SendIcon 
-                    //   style={activeButton}
+                      style={activeButton}
                       />
                   </IconButton>
       </Toolbar>

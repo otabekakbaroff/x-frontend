@@ -34,3 +34,9 @@ color: white;
 font-size: 2.5em;
 background:${stringToColor(localStorage.getItem(name))}
 `
+
+export const chatbox={
+    paddingBottom:"100px",
+    paddingTop:"25px",
+    marginTop:"65px"
+}
