@@ -8,7 +8,7 @@ function Users(){
         <div className="users">
             <MyProfile/>
             <UserSearch/>
-            <MyContacts/>
+            <MyContacts/> 
         </div>
     )
 }

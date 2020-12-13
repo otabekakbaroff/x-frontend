@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import InputAdornment from "@material-ui/core/InputAdornment";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import FaceIcon from '@material-ui/icons/Face';
+// import FaceIcon from '@material-ui/icons/Face';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 function Register(props){
     const classes = useStyles();
     const [signup,setSignup]=useState({
-        name:'',
+        // name:'',
         username:'',
         password:''
     });
@@ -53,10 +53,10 @@ function Register(props){
 
                 <h1>Sign Up</h1>
 
-                <TextField name="name" label="Displayed Name" variant="filled" onChange={handleChange} InputProps={{endAdornment: (
+                {/* <TextField name="name" label="Displayed Name" variant="filled" onChange={handleChange} InputProps={{endAdornment: (
                 <InputAdornment>
                     <FaceIcon />
-                </InputAdornment>)}}/>
+                </InputAdornment>)}}/> */}
 
                 <TextField name="username" label="Username" variant="filled" onChange={handleChange} InputProps={{endAdornment: (
                 <InputAdornment>

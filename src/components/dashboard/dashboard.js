@@ -7,20 +7,26 @@ const socket = io("http://localhost:5000")
 
 function Dashboard(){
     const [receiver, setReceiver] = useState(localStorage.getItem('receiver-username'))
+    const [connections,setConnections] = useState([])
+    const [users,setUsers] = useState([])
+    const [messagebox, setMessageBox] = useState([]);
 
     useEffect(()=>{
+        socket.emit('user-info', localStorage.getItem('username'))
         socket.on('confirm', function(data){
-            localStorage.setItem('username', data)
-        })
-        socket.on('reconnect', function(data){
             console.log(data)
-            socket.emit('reconnection',localStorage.getItem('username'))
+        })
+        socket.on('private',function(data){
+            console.log(data)
+        })
+        socket.on('error',function(data){
+            console.log(data)
         })
     },[socket])
 
     return(
         <div className="dashboard">
-            <Context.Provider value={{socket,receiver, setReceiver}}>
+            <Context.Provider value={{socket,receiver, setReceiver,connections,setConnections,users,setUsers,messagebox,setMessageBox}}>
                 <Users/>
                 <Messages/>
             </Context.Provider> 

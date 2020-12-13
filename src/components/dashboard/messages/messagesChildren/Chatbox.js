@@ -1,15 +1,22 @@
-import React from 'react'
-
+import React,{useContext,useState} from 'react'
+import {Context} from '../../../Context'
 
 
 function ChatBox(){
+    const messagebox=useContext(Context).messagebox;
+    const socket=useContext(Context).socket;
+    useState(()=>{
+        socket.on('private',function(data){
+            console.log(data)
+        })
+    },[socket])
     return(
         <div className="chat-box">
-            {/* {myMessages.map(item=>(
-                <div key={Math.floor(Math.random()*99999999)} className={`${item.from === localStorage.getItem('username')}`}>
+            {messagebox.map(item=>(
+                <div key={Math.floor(Math.random()*99999999)} className={`${item.from === localStorage.getItem('username') ? 'sender':'receiver'}`}>
                     <p>{item.message}</p>
                 </div>
-            ))} */}
+            ))}
         </div>
     )
 }

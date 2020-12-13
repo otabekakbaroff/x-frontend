@@ -23,15 +23,15 @@ function MyProfile(){
     },[])
 
     function accept_friend_request(e){
-        axiosWithAuth().put(`/api/connections/${e.target.name}/request-reply`, {status:2}).then(resp=>{
-            console.log('success')
+        axiosWithAuth().put(`/api/connections/${e.target.id}/request-reply`, {from:localStorage.getItem('username'),to:e.target.name,status:2}).then(resp=>{
+            e.target.style = "display:none"
         })
     }
 
     function decline_friend_request(e){
-        console.log(e.target.name)
-        axiosWithAuth().put(`/api/connections/${e.target.name}}/request-reply`, {status:1}).then(resp=>{
-            console.log('succes')
+        console.log(e.target.id)
+        axiosWithAuth().put(`/api/connections/${e.target.id}}/request-reply`, {status:1}).then(resp=>{
+            e.target.style = "display:none"
         })
     }
 
@@ -71,8 +71,8 @@ function MyProfile(){
                             <div key={item.id} className="friend-request-item">
                                 <div className="user-icon"></div>
                                 <p>{item.from} wants to be friends with you...</p>
-                                <button id="accept-button" onClick={accept_friend_request} name={item.id}>Accept</button>
-                                <button id="decline-button" onClick={decline_friend_request} name={item.id}>Decline</button>
+                                <button className="accept-button" onClick={accept_friend_request} id={item.id} name={item.from}>Accept</button>
+                                <button className="decline-button" onClick={decline_friend_request} id={item.id} >Decline</button>
                             </div>
                         ))}
                     </div>
