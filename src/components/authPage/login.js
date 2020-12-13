@@ -41,8 +41,10 @@ function Login(props) {
     .then(response=>{
           localStorage.setItem('myname',response.data.user.name);
           localStorage.setItem('username',response.data.user.username)
+          localStorage.setItem('chatted_last',response.data.user.chatted_last)
           localStorage.setItem('token',response.data.token);
           props.history.push("/dashboard");
+          console.log("response from login", response)
     })
     .catch(err=>{
           console.log(err);

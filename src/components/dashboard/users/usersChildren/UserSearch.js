@@ -6,14 +6,16 @@ import {Context} from '../../../Context'
 
 function UserSearch(){
     // const [connections,setConnections] = useState([])
-    // const socket = useContext(Context).socket;
-    // function search(e){
-    //     if(e.target.value.length !== 0){
-    //         socket.emit('user-search', e.target.value)
-    //     }else{
-    //         setUsers(connections)
-    //     }
-    // }
+    const socket = useContext(Context).socket;
+    const setConnections = useContext(Context).setConnections
+    function search(e){
+        if(e.target.value.length !== 0){
+            socket.emit('user-search', e.target.value)
+        }else{
+            // setUsers(connections)
+            setConnections([])
+        }
+    }
     return(
         // <TextField /*onChange={search}*/ fullWidth label="Search of users..." variant="filled" InputProps={{
         //     endAdornment: (
@@ -24,7 +26,7 @@ function UserSearch(){
         // }} />
         <TextField
           label="Search"
-        //   onChange={search}
+          onChange={search}
           id="outlined-margin-dense"
           style = {{width: "95%", margin:"0, 5px!important"}}
           margin="dense"

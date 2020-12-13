@@ -42,6 +42,27 @@ function Header({window, drawer, clickUserContact, setSwitchPage}){
     const theme= useContext(Context).theme;
     const handleDrawerToggle= useContext(Context).handleDrawerToggle;
     const mobileOpen= useContext(Context).mobileOpen;
+    const [login, setLogin]=useState({
+      username:'ebi123',
+      chatted_last: localStorage.getItem('receiver-username')
+
+    })
+
+
+    const logoff=()=>{
+      console.log("logoff")
+      axiosWithAuth().put('/api/users/last-convo', login)
+      .then(response=>{
+        console.log("response", response)
+        setLogin(response)
+        localStorage.clear()
+        console.log("bye")})
+      .catch(err=>{
+            console.log(err);
+      })
+    }
+
+    console.log("heyyy",)
 
     return (
         <div>
@@ -66,7 +87,9 @@ function Header({window, drawer, clickUserContact, setSwitchPage}){
             {receiver || localStorage.getItem('receiver-username')}
 
           </Typography>
+
           <div className={classes.grow2} />
+          <button onClick={logoff}>Logoff</button>
           <IconButton color="inherit">
             <SearchIcon />
           </IconButton>

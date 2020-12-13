@@ -7,10 +7,14 @@ import SearchIcon from '@material-ui/icons/Search';
 
 function MyContacts({setClickUserContact}){
     const [users,setUsers] = useState([])
+    console.log("this is from MY CONTACTS")
     useEffect(()=>{
         axiosWithAuth().get('/api/users/all-users').then(result=>{
             setUsers(result.data)
+            console.log("result from users", result.data)
         })
+        .catch(err=>console.log(err))
+        console.log("no one here?")
     },[])
     return(
         <div className="user-collection">

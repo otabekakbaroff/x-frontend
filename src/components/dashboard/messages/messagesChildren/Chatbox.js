@@ -19,38 +19,25 @@ function Chatbox(){
     const [activeButton,setActiveButton] = useState([]);
     const socket = useContext(Context).socket;
     const result = useContext(Context).result;
+    const users = useContext(Context).users;
     const setResult = useContext(Context).setResult;
+    const [showMessage, setShowMessage]=useState()
 
-    // function send(){
-    //     let chatbox = document.querySelector(".chat-box")
-    //     let message = document.querySelector("#text").value
-    //     socket.emit('private',{from:localStorage.getItem('username'),to:localStorage.getItem('receiver-username'),message:message,date:Date.now()})
-    //     let textnode = document.createElement("p");
-    //     textnode.innerHTML = message;
-    //     textnode.classList.add('true')
-    //     chatbox.appendChild(textnode);
-    //     chatbox.scrollTo(0, chatbox.scrollHeight);
-    // }
 
-    // useEffect(()=>{
-    //     let chatbox = document.querySelector(".chat-box")
-    //     socket.on('private', function(data){
-    //         console.log(data)
-    //         let textnode = document.createElement("p");
-    //         textnode.innerHTML = data.message;
-    //         textnode.classList.add('false')
-    //         chatbox.appendChild(textnode);
-    //         chatbox.scrollTo(0, chatbox.scrollHeight);
-    //     })
-    // },[socket])
+    const fetchingChat= ()=>{
+        //  return result.map(item=>item.message)
+         
+        setTimeout(() => {
+            setShowMessage(result)
+            return <p>"WAITING FOR THIS TO SET OFF"</p>
+            
+            // return result && result.map(item=>item.message)
+            // result && result.map(item=>item.message)
+        }, 4000);
+        return "hello there"
+    }
 
-    // const handleChange = (e) =>{
-    //     if(e.target.value){
-    //         setActiveButton({fill: "#478dff",transform: `rotate(-45deg)`})
-    //     }else{
-    //         setActiveButton({})
-    //     }
-    // }
+console.log("the messages", result)
 
     return(
         <div>
@@ -58,8 +45,18 @@ function Chatbox(){
         <div className={`chat-box ${classes.chatbox}`}>
         {/* <div className="chat-box"> */}
 
-        
-        {result&& result.map(item=>(
+        <div>This is supposed to be the chat area</div>
+        {/* <div>{users && result ? console.log("just trying this out", result):"Loading..."}</div> */}
+{/* {fetchingChat()} */}
+{result.length>0 && result.map(item=>item.message)}
+{/* {showMessage && showMessage.map(item=>item.message)} */}
+{/* {console.log("result", result && result.map(item=>item))} */}
+{/* {result ? result.map(item=>item.message):"not loaded"} */}
+
+
+    {/* <div>{result?"it loaded":"it didnt load"}</div> */}
+
+        {/* {result&& result.map(item=>(
           <div key={item.id} className ={`contactprofile ${classes.contact_profile}`}>
         <div className={`nthType ${classes.data_name}`}
          data-value={item.from===localStorage.getItem("receiver-username")?"theirname":"myname"}
@@ -70,7 +67,7 @@ function Chatbox(){
             </div>
             </div>
             </div>
-        ))}
+        ))} */}
 
         </div>
         </div>
