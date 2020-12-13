@@ -12,33 +12,37 @@ function Header(){
     const setMessageBox=useContext(Context).setMessageBox;
     useEffect(()=>{
         axiosWithAuth().post(`/api/messages/my-messages`,{from:localStorage.getItem('receiver-username'),to:localStorage.getItem('username')}).then(result=>{
-            setMessageBox(result.data)
+            if(result.data.error_message){
+                console.log(result.data.error_message)
+            }else{
+                setMessageBox(result.data)
+            }
         })
     },[receiver])
-    return (
-            <div>
-                <div className="profile-header">
-                    <div className="profile_details">
-                        <div className="icon"></div>
-                        <div className="name"><h1>{receiver}</h1></div>
-                    </div>
-                    <div className="comm-icons">
-                        <IconButton >
-                            <SearchIcon/>
-                        </IconButton>
-                        <IconButton >
-                            <CallIcon/>
-                        </IconButton>
-                        <IconButton >
-                            <VideocamIcon/>
-                        </IconButton>
-                        <IconButton >
-                            <MoreVertIcon/>
-                        </IconButton>
+        return (
+                <div>
+                    <div className="profile-header">
+                        <div className="profile_details">
+                            <div className="icon"></div>
+                            <div className="name"><h1>{receiver}</h1></div>
+                        </div>
+                        <div className="comm-icons">
+                            <IconButton >
+                                <SearchIcon/>
+                            </IconButton>
+                            <IconButton >
+                                <CallIcon/>
+                            </IconButton>
+                            <IconButton >
+                                <VideocamIcon/>
+                            </IconButton>
+                            <IconButton >
+                                <MoreVertIcon/>
+                            </IconButton>
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
 }
 
 export default Header;

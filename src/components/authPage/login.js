@@ -39,8 +39,10 @@ function Login(props) {
     e.preventDefault()
     axiosWithAuth().post('/api/users/login', login)
     .then(response=>{
+          console.log(response)
           localStorage.setItem('username',response.data.user.username)
           localStorage.setItem('token',response.data.token);
+          localStorage.setItem('receiver-username',response.data.user.chatted_last)
           props.history.push("/dashboard");
     })
     .catch(err=>{

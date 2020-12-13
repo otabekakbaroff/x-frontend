@@ -6,13 +6,21 @@ import Sendbox from './messagesChildren/Sendbox'
 
 
 function Messages(){
-    return(
-        <div className="messages">
-            <Header/>
-            <Chatbox/>
-            <Sendbox/>
-        </div>
-    )
+    if(localStorage.getItem('receiver-username') !== 'null'){
+        return(
+            <div className="messages">
+                <Header/>
+                <Chatbox/>
+                <Sendbox/>
+            </div>
+        )
+    }else{
+        return(
+            <div className="messages">
+                <p>Hello, welcome to our chat app, please search for someone and start connecting!</p>
+            </div>
+        )
+    }
 }
 
 export default Messages
