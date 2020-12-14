@@ -1,5 +1,6 @@
 import React, { useEffect, useState,useContext } from 'react';
 import {Context} from '../../../Context'
+//globalContext
 import IconButton from "@material-ui/core/IconButton";
 import CallIcon from '@material-ui/icons/Call';
 import VideocamIcon from '@material-ui/icons/Videocam';
@@ -47,7 +48,6 @@ function Header({window, drawer, clickUserContact, setSwitchPage}){
       chatted_last: localStorage.getItem('receiver-username')
 
     })
-
 
     const logoff=()=>{
       console.log("logoff")

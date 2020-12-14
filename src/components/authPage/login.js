@@ -1,4 +1,6 @@
-import React,{useState} from 'react';
+import React, { useState, useContext } from 'react';
+// globalContext
+import { userContext } from '../../context/UsersContext'
 import { Link } from 'react-router-dom';
 import axiosWithAuth from '../axiosWithAuth'
 import TextField from '@material-ui/core/TextField';
@@ -23,60 +25,71 @@ function Login(props) {
 
   const classes = useStyles();
 
-  const [login,setLogin]=useState({
-      username:'',
-      password:''
+  const [login, setLogin] = useState({
+    username: '',
+    password: ''
   });
-  
-  const handleChange=e=>{
-      setLogin({
-        ...login,
-        [e.target.name]:e.target.value
+
+  // Bring in functions from context
+  const { setUser } = useContext(userContext);
+
+  const handleChange = e => {
+    setLogin({
+      ...login,
+      [e.target.name]: e.target.value
     })
   }
 
-  const LoginSubmit=e=>{
+  const LoginSubmit = e => {
     e.preventDefault()
     axiosWithAuth().post('/api/users/login', login)
-    .then(response=>{
-          localStorage.setItem('myname',response.data.user.name);
-          localStorage.setItem('username',response.data.user.username)
-          localStorage.setItem('chatted_last',response.data.user.chatted_last)
-          localStorage.setItem('token',response.data.token);
-          props.history.push("/dashboard");
-          console.log("response from login", response)
-    })
-    .catch(err=>{
-          console.log(err);
-    })
+      .then(response => {
+        console.log("RESPONSE IS: ", response)
+        localStorage.setItem('myname', response.data.user.name);
+        // set name in context
+        localStorage.setItem('username', response.data.user.username)
+        setUser(response.data.user.username);
+
+        localStorage.setItem('chatted_last', response.data.user.chatted_last)
+        localStorage.setItem('token', response.data.token);
+        props.history.push("/dashboard");
+        console.log("response from login", response)
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   return (
     <div className="login">
 
-        <form className={classes.root} noValidate autoComplete="off">
+      <form className={classes.root} noValidate autoComplete="off">
 
-          <h1>Login</h1>
+        <h1>Login</h1>
 
-          <div className="avatar"></div>
+        <div className="avatar"></div>
 
-          <TextField  name="username" label="Username" variant="filled" onChange={handleChange} InputProps={{ endAdornment: (
-          <InputAdornment>
+        <TextField name="username" label="Username" variant="filled" onChange={handleChange} InputProps={{
+          endAdornment: (
+            <InputAdornment>
               <AccountCircleIcon />
-          </InputAdornment>)}}/>
+            </InputAdornment>)
+        }} />
 
-          <TextField name="password"  label="Password" type="password" autoComplete="current-password" variant="filled"  onChange={handleChange} InputProps={{endAdornment: (
-          <InputAdornment>
+        <TextField name="password" label="Password" type="password" autoComplete="current-password" variant="filled" onChange={handleChange} InputProps={{
+          endAdornment: (
+            <InputAdornment>
               <VpnKeyIcon />
-          </InputAdornment>)}}/>
+            </InputAdornment>)
+        }} />
 
-          <Button type="submit" variant="contained" color="primary" size="large" onClick={LoginSubmit}>
-            Login
+        <Button type="submit" variant="contained" color="primary" size="large" onClick={LoginSubmit}>
+          Login
           </Button>
 
-          <span>Don't have an account? <Link to="/signup">Sign Up</Link></span>
+        <span>Don't have an account? <Link to="/signup">Sign Up</Link></span>
 
-        </form>
+      </form>
 
     </div>
   );
